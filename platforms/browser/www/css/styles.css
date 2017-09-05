@@ -355,9 +355,9 @@ body {
 }
 
 .custom-start-modal-content {
-    width: 68%;
+    width: 80%;
     position: absolute;
-    left: 16%;
+    left: 10%;
     color: white;
     text-align: center;
     font-size: 9vw;

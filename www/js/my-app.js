@@ -120,7 +120,7 @@ myApp.onPageInit('challenge', function (page) {
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
         <polyline class="path check" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
       </svg>`);
-      result.push('success');
+      result.push('pass');
     } else {
       $$(`#${this.id}`).css('background', '#ff4d4d');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
@@ -134,37 +134,48 @@ myApp.onPageInit('challenge', function (page) {
     // wait for answer correct/wrong animate
     setTimeout(() => {
       if (number >= 1) {
-        mainView.router.load({
-          url: 'index.html',
-          context: {
-            result,
-          }
-        });
-      }
+        $$('#gameStart-modal').css('display', 'block');
+        $$('.custom-start-modal').css({
+          'animation': 'fadeOut 1s linear',
+          'text-align': 'none',
+        })
+        $$('.custom-start-modal-content').css('top', 'calc((100vh - 90vw) / 2)');
+        $$('.custom-start-modal-content').html(`<img style="width: 100%;" id="finish-board" src="img/result.png">
+          <img src="img/${result[0]}.png" style="position: absolute; width: 40%; top:calc(90vw * 0.185 - 2.5vw); left: 40%;">
+          <img src="img/${result[1]}.png" style="position: absolute; width: 40%; top:calc(90vw * 0.5 - 2.5vw); left: 40%;">
+          <img id="ok-btn" src="img/ok-btn.png" style="position: absolute; width: 45%; top:calc(90vw * 0.75); left: 27.5%;">
+        `);
 
-      $$('#start-text').css('animation', 'head-half 3s 1s');
-      $$('.custom-start-modal').css('animation', 'fadeInFromNone 1s 5s ease-out, fadeOut 1s linear')
-      $$('#gameStart-modal').css('display', 'block');
-      setTimeout(() => {
-        $$('.loading').html('第二題');
-        $$(`#${this.id}`).css('background', '#007aff');
-      }, 1500);
-      setTimeout(() => {
-        $$('#gameStart-modal').css('display', 'none');
-      }, 6000);
-      
-      //  next question
-      setTimeout(() => {
-        number++;
+        $$('#ok-btn').on('click', () => {
+          mainView.router.load({
+            url: 'index.html',
+          });
+        });
+      } else {
+        $$('#start-text').css('animation', 'head-half 3s 1s');
+        $$('.custom-start-modal').css('animation', 'fadeInFromNone 1s 5s ease-out, fadeOut 1s linear')
+        $$('#gameStart-modal').css('display', 'block');
+        setTimeout(() => {
+          $$('.loading').html('第二題');
+          $$(`#${this.id}`).css('background', '#007aff');
+        }, 1500);
+        setTimeout(() => {
+          $$('#gameStart-modal').css('display', 'none');
+        }, 6000);
         
-        $$('#questionTextArea').html(question[number]);
-        $$('#question-number').html(`Q${number+1}:`);
-        for (let i = 0; i < 4; i += 1) {
-          $$(`#answer${i+1}`).html(options[number][i]);
-        }
-        $$('.answer').on('click', answerClicked); // unlock the button
-      }, 2500);
-  }, 2500);
+        //  next question
+        setTimeout(() => {
+          number++;
+          
+          $$('#questionTextArea').html(question[number]);
+          $$('#question-number').html(`Q${number+1}:`);
+          for (let i = 0; i < 4; i += 1) {
+            $$(`#answer${i+1}`).html(options[number][i]);
+          }
+          $$('.answer').on('click', answerClicked); // unlock the button
+        }, 2500);
+      }
+    }, 2500);
   });
 
 });
