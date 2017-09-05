@@ -1,0 +1,405 @@
+@font-face {
+    font-family: 'Framework7 Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/Framework7Icons-Regular.eot");
+    src: local('Framework7 Icons'), local('Framework7Icons-Regular'), url("../fonts/Framework7Icons-Regular.woff2") format("woff2"), url("../fonts/Framework7Icons-Regular.woff") format("woff"), url("../fonts/Framework7Icons-Regular.ttf") format("truetype");
+}
+
+.f7-icons,
+.framework7-icons {
+    font-family: 'Framework7 Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+}
+
+body {
+    font-family: Microsoft JhengHei;
+    letter-spacing: 2px;
+}
+
+.navbar {
+    color: white !important;
+}
+
+.subnavbar {
+    padding: 0;
+}
+
+.subnavbar > .buttons-row {
+    height: 100%;
+    background: #010a38;
+}
+
+.subnavbar .button {
+    color: white !important;
+    padding: 0 !important;
+    font-size: 15px !important;
+    height: 100%;
+    line-height: 32px;
+    background-image: url('../img/tab-btn.png');
+    background-size: 100% 100%;
+}
+.subnavbar > .buttons-row > .button {
+    border:  none !important;
+    border-left: 0.1px solid black !important;
+    border-right: 0.1px solid black !important;
+}
+
+
+.subnavbar .button.active {
+    background-image: url('../img/tab-active-btn.png');
+    background-size: cover;
+}
+
+
+.custom-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+}
+
+/* Modal Content (image) */
+
+.custom-modal-content , .challenge-modal-content {
+    position: relative;
+    left: 15%;
+    top: 45%;
+    width: 70%;
+}
+
+.challenge-modal-content {
+    top: calc(45% - 25vw);
+}
+
+@-webkit-keyframes fadeInFromNone {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+
+    1% {
+        display: block;
+        opacity: 1;
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+
+    1% {
+        display: block;
+        opacity: 1;
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    100% {
+        display: block;
+        opacity: 1;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    0% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+/* Add Animation */
+
+.custom-modal-content, .challenge-modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/*  challenge  */
+.level>p>span,
+.reward>span {
+    color: white;
+    font-weight: bold;
+}
+
+.options {
+    position: relative;
+    top: 4vh;
+    height: calc(100vh - 63vw - 44px);
+    text-align: center;
+}
+
+.options>.button {
+    height: 20%;
+    line-height: calc((100vh - 63vw - 44px) / 5);
+    color: white;
+    font-size: 3.6vh;
+    font-weight: bold;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+/*
+    background-image: url('../img/answer-button.png');
+    background-size: 100% 100%;
+    
+}*/
+
+.level>p>span {
+    display: inline-block !important;
+    vertical-align: middle;
+    font-size: 2.4vh;
+}
+
+.question {
+    position: relative;
+    top: 2vw;
+    height: calc(50vw - 44px);
+    margin: 0 auto;
+    font-weight: bold;
+    color: white;
+    margin: 5vw;
+}
+
+.answer > svg {
+    width: 6vh;
+    display: inline-block;
+    margin-top: calc((100vh - 63vw - 44px) / 20);
+    position: absolute;
+    right: 10px;
+}
+
+.path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    stroke-width:7.5;
+}
+
+.path.circle {
+    -webkit-animation: dash 0.9s ease-in-out;
+    animation: dash 0.9s ease-in-out;
+}
+
+.path.line {
+    stroke-dashoffset: 1000;
+    -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
+    animation: dash 0.9s 0.35s ease-in-out forwards;
+}
+
+.path.check {
+    stroke-dashoffset: -100;
+    -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
+    animation: dash-check 0.9s 0.35s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@-webkit-keyframes dash-check {
+    0% {
+        stroke-dashoffset: -100;
+    }
+    100% {
+        stroke-dashoffset: 900;
+    }
+}
+
+@keyframes dash-check {
+    0% {
+        stroke-dashoffset: -100;
+    }
+    100% {
+        stroke-dashoffset: 900;
+    }
+}
+
+@keyframes blink {
+    /**
+     * At the start of the animation the dot
+     * has an opacity of .2
+     */
+    0% {
+      opacity: .2;
+    }
+    /**
+     * At 20% the dot is fully visible and
+     * then fades out slowly
+     */
+    20% {
+      opacity: 1;
+    }
+    /**
+     * Until it reaches an opacity of .2 and
+     * the animation can start again
+     */
+    100% {
+      opacity: .2;
+    }
+}
+
+.custom-start-modal {
+    display: block;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-image:url('../img/result-background.png');background-size: cover;
+    /* Black w/ opacity */
+    /*
+    -webkit-animation: fadeInFromNone 1s ease-out;
+    -webkit-animation-delay: 8s; 
+    */
+    animation: fadeInFromNone 1s 8s ease-out;
+}
+
+
+#start-text {
+    animation: head 5s 2s;
+}
+
+@keyframes head {
+    0% {font-size:9vw; opacity:1;}
+    65% {font-size:0; opacity:0;}
+    75% {font-size:0; opacity:0;}
+    100% {font-size:9vw;opacity:1;}
+}
+
+@keyframes head-half {
+    0% {font-size:0; opacity:0;}
+    100% {font-size:9vw;opacity:1;}
+}
+
+.custom-start-modal-content {
+    width: 68%;
+    position: absolute;
+    left: 16%;
+    color: white;
+    text-align: center;
+    font-size: 9vw;
+    top: 46vh; 
+}
+
+
+.loading span {
+    animation-name: blink;
+    animation-duration: 2.6s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+.loading span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.loading span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.loading span:nth-child(4) {
+    animation-delay: .6s;
+}
+
+.loading span:nth-child(5) {
+    animation-delay: .8s;
+}
+
+.loading span:nth-child(6) {
+    animation-delay: 1s;
+}
+
+.loading span:nth-child(7) {
+    animation-delay: 1.2s;
+}
+
+.loading span:nth-child(8) {
+    animation-delay: 1.4s;
+}
+
+.loading span:nth-child(9) {
+    animation-delay: 1.6s;
+}
