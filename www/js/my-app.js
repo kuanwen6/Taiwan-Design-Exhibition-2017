@@ -78,7 +78,6 @@ myApp.onPageInit('information', function (page) {
     $$('.navbar').css('background-size' ,'none');
   });
 
-  console.log(navigationInfo);
   $$('#route-tab > .content-block').append(navigationInfo);
   $$('#info-tab > .content-block').append(ftd_1.introduction);
   $$('#traffic-tab > .content-block').append(ftd_1.traffic);
