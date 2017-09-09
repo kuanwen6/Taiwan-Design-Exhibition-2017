@@ -1,5 +1,7 @@
 // Initialize app
-var myApp = new Framework7();
+var myApp = new Framework7({
+  statusbarOverlay: false,
+});
 
 
 // If we need to use custom DOM library, let's save it to $$ variable:
@@ -8,7 +10,7 @@ var $$ = Dom7;
 // Add view
 var mainView = myApp.addView('.view-main', {
   // Because we want to use dynamic navbar, we need to enable it for this view:
-  dynamicNavbar: true
+  dynamicNavbar: true,
 });
 
 // Handle Cordova Device Ready Event
@@ -41,6 +43,8 @@ $$('#siteImg').on('click', (e) => {
   if (y > pHeight * 0.743) {
     if (x > pWidth * 0.5) {  //  challenge
       $$('#challengeImg').attr('src', 'img/challenge-board.png');
+      $$('#item1').attr('src', 'img/item-2.png');
+      $$('#item2').attr('src', 'img/item-2.png');
       $$('#site-modal').css('display', 'none');
       $$('#challenge-modal').css('display', 'block');
     } else {  //  information
@@ -55,9 +59,6 @@ $$('#challengeImg').on('click', (e) => {
   const pHeight = $('#challengeImg').height();
   const pOffset = $('#challengeImg').offset();
   const y2 = e.pageY - pOffset.top;
-console.log('Y:' + y2);
-console.log('P:' + pOffset.top);
-
 
   if (y2 > pHeight * 0.855) {
     mainView.router.load({
@@ -76,12 +77,32 @@ myApp.onPageInit('information', function (page) {
     $$('.navbar').css('background-image' ,'none');
     $$('.navbar').css('background-size' ,'none');
   });
+
+  console.log(navigationInfo);
+  $$('#route-tab > .content-block').append(navigationInfo);
+  $$('#info-tab > .content-block').append(ftd_1.introduction);
+  $$('#traffic-tab > .content-block').append(ftd_1.traffic);
+  $$('#parking-tab > .content-block').append(ftd_1.parking);
 })
 
 myApp.onPageInit('challenge', function (page) {
   //  navbar background
   $$('.navbar').css('background-image' ,"url('img/game-page.png')");
-  $$('.navbar').css('background-size' ,'100%');
+  $$('.navbar').css('background-size' ,'cover');
+
+  if (($(window).height() / $(window).width()) > 1.73) { // device too long
+    $$('.question').css({
+      'top': '1vh',
+      'height': 'calc(29vh - 44px)',
+      'margin': '3vh',
+    });
+    $$('.options').css({
+      'top': '1vh',
+      'height': 'calc(100vh - 36vh)',
+    });
+    $$('.options > .button').css('line-height', 'calc((100vh - 36vh) / 4);')
+    $$('.answer > svg').css('margin-top', 'calc((100vh - 36vh) / 12)')
+  } 
 
   //  home button
   $$('.left').on('click' , () => {
@@ -92,7 +113,7 @@ myApp.onPageInit('challenge', function (page) {
   //  loading page
   setTimeout(() => {
     $$('#gameStart-modal').css('display', 'none');
-  }, 9000);
+  }, 8000);
 
   setTimeout(() => {
     $$('.loading').html('第一題');
@@ -115,14 +136,14 @@ myApp.onPageInit('challenge', function (page) {
     $$('.loading').html(' ');
     $$('.answer').off('click', answerClicked); // lock the button
     if (this.id === answer[number]) {
-      $$(`#${this.id}`).css('background', '#40bf79');
+      $$(`#${this.id}`).attr('style', 'background-image: url("img/correct-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
         <polyline class="path check" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
       </svg>`);
       result.push('pass');
     } else {
-      $$(`#${this.id}`).css('background', '#ff4d4d');
+      $$(`#${this.id}`).attr('style', 'background-image: url("img/wrong-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
         <line class="path line" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
@@ -152,16 +173,16 @@ myApp.onPageInit('challenge', function (page) {
           });
         });
       } else {
-        $$('#start-text').css('animation', 'head-half 3s 1s');
-        $$('.custom-start-modal').css('animation', 'fadeInFromNone 1s 5s ease-out, fadeOut 1s linear')
+        $$('#start-text').css('animation', 'head-half 2s 1s');
+        $$('.custom-start-modal').css('animation', 'fadeInFromNone 1s 4s ease-out, fadeOut 1s linear')
         $$('#gameStart-modal').css('display', 'block');
         setTimeout(() => {
           $$('.loading').html('第二題');
-          $$(`#${this.id}`).css('background', '#007aff');
-        }, 1500);
+          $$(`#${this.id}`).attr('style', 'background-image: url("img/normal-btn.png") !important');
+        }, 1200);
         setTimeout(() => {
           $$('#gameStart-modal').css('display', 'none');
-        }, 6000);
+        }, 5000);
         
         //  next question
         setTimeout(() => {

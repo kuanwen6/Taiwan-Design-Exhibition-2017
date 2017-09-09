@@ -67,6 +67,18 @@ body {
     background-size: cover;
 }
 
+.tab {
+    padding: 0 !important;
+}
+
+.tab > .content-block {
+    margin: 0;
+    color: white !important;
+}
+
+.note {
+    font-size: 12px;
+}
 
 .custom-modal {
     display: none;
@@ -185,26 +197,24 @@ body {
 
 .options {
     position: relative;
-    top: 4vh;
-    height: calc(100vh - 63vw - 44px);
+    top: 2vw;
+    height: calc(100vh - 62vw);
     text-align: center;
 }
 
 .options>.button {
-    height: 20%;
-    line-height: calc((100vh - 63vw - 44px) / 5);
-    color: white;
+    height: 25%;
+    line-height: calc((100vh - 62vw) / 4);
+    color: black !important;
     font-size: 3.6vh;
     font-weight: bold;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    margin-top: 5%;
+    border-radius: 0px !important;
+
+    background-image: url('../img/normal-btn.png') !important;
+    background-size: 100% 100% !important;    
 }
-/*
-    background-image: url('../img/answer-button.png');
-    background-size: 100% 100%;
-    
-}*/
 
 .level>p>span {
     display: inline-block !important;
@@ -225,7 +235,7 @@ body {
 .answer > svg {
     width: 6vh;
     display: inline-block;
-    margin-top: calc((100vh - 63vw - 44px) / 20);
+    margin-top: calc((100vh - 62vw) / 12);
     position: absolute;
     right: 10px;
 }
@@ -334,12 +344,12 @@ body {
     -webkit-animation: fadeInFromNone 1s ease-out;
     -webkit-animation-delay: 8s; 
     */
-    animation: fadeInFromNone 1s 8s ease-out;
+    animation: fadeInFromNone 1s 7s ease-out;
 }
 
 
 #start-text {
-    animation: head 5s 2s;
+    animation: head 4s 2s;
 }
 
 @keyframes head {
