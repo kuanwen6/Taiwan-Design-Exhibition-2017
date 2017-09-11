@@ -1,6 +1,7 @@
 // Initialize app
 var myApp = new Framework7({
   statusbarOverlay: false,
+  template7Pages: true,
 });
 
 
@@ -20,8 +21,8 @@ $$(document).on('deviceready', function () {
 
 
 
-$$('.button').on('click', () => {
-  $$('#siteImg').attr('src', 'img/site-board.png');
+$$('.button').on('click', function () {
+  $$('#siteImg').attr('src', `img/${this.id}.png`);
   $$('#site-modal').css('display', 'block');
 });
 
@@ -33,7 +34,7 @@ $$('#close-challenge-btn').on('click', () => {
   $$('#challenge-modal').css('display', 'none');
 })
 
-$$('#siteImg').on('click', (e) => {
+$$('#siteImg').on('click', function (e) {
   const pHeight = $('#siteImg').height();
   const pWidth = $('#siteImg').width();
   const pOffset = $('#siteImg').offset();
@@ -48,8 +49,16 @@ $$('#siteImg').on('click', (e) => {
       $$('#site-modal').css('display', 'none');
       $$('#challenge-modal').css('display', 'block');
     } else {  //  information
+      const sitePosition = this.src.indexOf('site');
+      const sitNum = parseInt(this.src.charAt(sitePosition + 4));
       mainView.router.load({
         url: 'information.html',
+        context: {
+          introduction: ftd[sitNum].introduction,
+          navigation: navigationInfo,
+          traffic: ftd[sitNum].traffic,
+          parking: ftd[sitNum].parking,
+        },
       });
     }
   }
@@ -67,8 +76,6 @@ $$('#challengeImg').on('click', (e) => {
   }
 });
 
-
-
 myApp.onPageInit('information', function (page) {
   $$('.navbar').css('background-image' ,"url('img/information-background.png')");
   $$('.navbar').css('background-size' ,'cover');
@@ -78,10 +85,10 @@ myApp.onPageInit('information', function (page) {
     $$('.navbar').css('background-size' ,'none');
   });
 
-  $$('#route-tab > .content-block').append(navigationInfo);
-  $$('#info-tab > .content-block').append(ftd_1.introduction);
-  $$('#traffic-tab > .content-block').append(ftd_1.traffic);
-  $$('#parking-tab > .content-block').append(ftd_1.parking);
+  //$$('#route-tab > .content-block').append(navigationInfo);
+  //$$('#info-tab > .content-block').append(ftd_1.introduction);
+  //$$('#traffic-tab > .content-block').append(ftd_1.traffic);
+  //$$('#parking-tab > .content-block').append(ftd_1.parking);
 })
 
 myApp.onPageInit('challenge', function (page) {
