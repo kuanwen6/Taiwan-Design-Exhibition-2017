@@ -48,6 +48,7 @@ $$('#siteImg').on('click', function (e) {
       $$('#item2').attr('src', 'img/item-2.png');
       $$('#site-modal').css('display', 'none');
       $$('#challenge-modal').css('display', 'block');
+
     } else {  //  information
       const sitePosition = this.src.indexOf('site');
       const sitNum = parseInt(this.src.charAt(sitePosition + 4));
@@ -63,6 +64,32 @@ $$('#siteImg').on('click', function (e) {
     }
   }
 });
+
+//  click items open the picker modal with introduction
+$$('.items').on('click', () => {
+  if ($$('.picker-modal.modal-in').length > 0) {
+    myApp.closeModal('.picker-modal.modal-in');
+  } else {
+    myApp.pickerModal(
+      `<div class="picker-modal" style="height: auto;">
+        <div class="picker-modal-inner">
+          <div class="content-block" style="margin: 15px 0;">
+            <h2>祕法指環</h2>
+            <p>需要答對此關卡共5題答案</p>
+            <p><span style="color: red;">0</span> / 5題</p>
+          </div>
+        </div>
+      </div>`
+  )}
+});
+
+//  if not click picker modal while its opening, close it
+$$(window).on('click', (event) => {
+  if (!$(event.target).closest('.picker-modal').length && !$(event.target).closest('.items').length && $$('.picker-modal.modal-in').length > 0) {
+    myApp.closeModal('.picker-modal.modal-in');
+  }
+});
+
 
 $$('#challengeImg').on('click', (e) => {
   const pHeight = $('#challengeImg').height();
@@ -84,11 +111,6 @@ myApp.onPageInit('information', function (page) {
     $$('.navbar').css('background-image' ,'none');
     $$('.navbar').css('background-size' ,'none');
   });
-
-  //$$('#route-tab > .content-block').append(navigationInfo);
-  //$$('#info-tab > .content-block').append(ftd_1.introduction);
-  //$$('#traffic-tab > .content-block').append(ftd_1.traffic);
-  //$$('#parking-tab > .content-block').append(ftd_1.parking);
 })
 
 myApp.onPageInit('challenge', function (page) {
