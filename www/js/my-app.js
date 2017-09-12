@@ -2,6 +2,7 @@
 var myApp = new Framework7({
   statusbarOverlay: false,
   template7Pages: true,
+  swipeBackPage: false,
 });
 
 
@@ -114,10 +115,10 @@ myApp.onPageInit('information', function (page) {
 })
 
 myApp.onPageInit('challenge', function (page) {
-  //  navbar background
-  $$('.navbar').css('background-image' ,"url('img/result-background.png')");
-  $$('.navbar').css('background-size' ,'cover');
-  $$('.navbar').css('transition', 'background-image 1s ease-in-out'); //  for navbar background image transition animate
+  //  navbar background, opacity 0
+  $$('.navbar').css('background-image' ,'none');
+  $$('.navbar').css('background-size' ,'none');
+  $$('.navbar').css('background-color' ,'rgba(0, 0, 0, 0)');
 
   if (($(window).height() / $(window).width()) > 1.73) { // device too long
     $$('.question').css({
@@ -131,8 +132,6 @@ myApp.onPageInit('challenge', function (page) {
     });
     $$('.options > .button').css('line-height', 'calc((100vh - 36vh) / 4);');
     $$('.answer > svg').css('margin-top', 'calc((100vh - 36vh) / 12)');
-
-    $$('.navbar').css('background-size', `${($(window).height() / $(window).width()) / 1.73 * 100}%`);
   } 
 
   //  home button
@@ -144,15 +143,11 @@ myApp.onPageInit('challenge', function (page) {
   //  loading page
   setTimeout(() => {
     $$('#gameStart-modal').css('display', 'none');
-  }, 8000);
-
-  setTimeout(() => {
-    $$('.navbar').css('background-image' ,"url('img/game-page.png')");
-  }, 7000);
+  }, 6600);
 
   setTimeout(() => {
     $$('.loading').html('第一題');
-  }, 4500);
+  }, 3000);
 
   let number = 0;
 
@@ -192,10 +187,9 @@ myApp.onPageInit('challenge', function (page) {
       if (number >= 1) {  //  end, jump to result board
         $$('#gameStart-modal').css('display', 'block');
         $$('.custom-start-modal').css({
-          'animation': 'fadeOut 1s ease-in-out',
+          'animation': 'fadeOut 0.6s ease-in-out',
           'text-align': 'none',
         });
-        $$('.navbar').css('background-image' ,"url('img/result-background.png')");
         $$('.custom-start-modal-content').css('top', 'calc((100vh - 90vw) / 2)');
         $$('.custom-start-modal-content').html(`<img style="width: 100%;" id="finish-board" src="img/result.png">
           <img src="img/${result[0]}.png" style="position: absolute; width: 40%; top:calc(90vw * 0.185 - 2.5vw); left: 40%;">
@@ -209,20 +203,16 @@ myApp.onPageInit('challenge', function (page) {
           });
         });
       } else {
-        $$('#start-text').css('animation', 'head-half 2s 1s');
-        $$('.custom-start-modal').css('animation', 'fadeInFromNone 1s 4s ease-in-out, fadeOut 1s ease-in-out')
+        $$('#start-text').css('animation', 'head-half 1.5s 1s');
+        $$('.custom-start-modal').css('animation', 'fadeInFromNone 0.6s 3.5s ease-in-out, fadeOut 0.6s ease-in-out')
         $$('#gameStart-modal').css('display', 'block');
-        $$('.navbar').css('background-image' ,"url('img/result-background.png')");
-        setTimeout(() => {
-          $$('.navbar').css('background-image' ,"url('img/game-page.png')");
-        }, 4000);
         setTimeout(() => {
           $$('.loading').html('第二題');
           $$(`#${this.id}`).attr('style', 'background-image: url("img/normal-btn.png") !important');
-        }, 1200);
+        }, 1000);
         setTimeout(() => {
           $$('#gameStart-modal').css('display', 'none');
-        }, 5000);
+        }, 4100);
         
         //  next question
         setTimeout(() => {

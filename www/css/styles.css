@@ -348,18 +348,18 @@ body {
     -webkit-animation: fadeInFromNone 1s ease-out;
     -webkit-animation-delay: 8s; 
     */
-    animation: fadeInFromNone 1s 7s ease-in-out;
+    animation: fadeInFromNone 0.6s 6s ease-in-out;
 }
 
 
 #start-text {
-    animation: head 4s 2s;
+    animation: head 2.5s 2s;
 }
 
 @keyframes head {
     0% {font-size:9vw; opacity:1;}
-    65% {font-size:0; opacity:0;}
-    75% {font-size:0; opacity:0;}
+    40% {font-size:0; opacity:0;}
+    /*60% {font-size:0; opacity:0;}*/
     100% {font-size:9vw;opacity:1;}
 }
 
