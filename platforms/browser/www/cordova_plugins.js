@@ -14,8 +14,7 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-console": "1.0.7",
-    "cordova-plugin-statusbar": "1.0.1",
-    "cordova-plugin-crosswalk-webview": "2.3.0"
+    "cordova-plugin-statusbar": "1.0.1"
 }
 // BOTTOM OF METADATA
 });

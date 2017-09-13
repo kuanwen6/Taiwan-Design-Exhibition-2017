@@ -50,6 +50,11 @@ const ftd = [{
     <p>國立成功大學大學路地下停車場<span style="color: red;">（收費）</span>：臺南市東區大學路1號</p>
     <p>國立成功大學光復校區計時收費停車場<span style="color: red;">（收費）</span>：臺南市東區大學路1號</p>
     <p>大學路社E2停車場<span style="color: red;">（收費）</span>：臺南市東區大學路與育樂街66巷交叉路口</p>`,
+        items: [{
+            title: '古代書籍',
+        }, {
+            title: '老舊的尺規',
+        }],
     },
 
     //  南風館 ftd[1]
@@ -89,6 +94,11 @@ const ftd = [{
     <p>國立成功大學大學路地下停車場<span style="color: red;">（收費）</span>：臺南市東區大學路1號</p>
     <p>國立成功大學光復校區計時收費停車場<span style="color: red;">（收費）</span>：臺南市東區大學路1號</p>
     <p>大學路社E2停車場<span style="color: red;">（收費）</span>：臺南市東區大學路與育樂街66巷交叉路口</p>`,
+        items: [{
+            title: '南風',
+        }, {
+            title: '毛筆',
+        }],
     },
 
     //  工藝館 ftd[2]
@@ -124,6 +134,11 @@ const ftd = [{
     <p>衛生福利部臺南醫院收費停車場<span style="color: red;">（收費）</span>：臺南市中西區中山路125號</p>
     <p>民族停車場<span style="color: red;">（收費）</span>：臺南市中西區民族路二段81號</p>
     <p>台灣聯通臺南忠義場<span style="color: red;">（收費）</span>：臺南市中西區忠義路二段177號旁</p>`,
+        items: [{
+            title: '貪婪之壺',
+        }, {
+            title: '祕法指環',
+        }],
     },
 
     //  新銳館 ftd[3]
@@ -161,6 +176,11 @@ const ftd = [{
     <p>新光三越新天地停車場<span style="color: red;">（收費）</span>：西門路一段658號</p>
     <p>新光三越新天地二館停車場<span style="color: red;">（收費）</span>：永福路一段189號</p>
     <p>客家文化會館路外停車場<span style="color: red;">（收費）</span>：夏林路客家文化會館旁</p>`,
+        items: [{
+            title: '藍色染料',
+        }, {
+            title: '藍晒杯墊',
+        }],
     },
 
     //  國際館 ftd[4]
@@ -193,6 +213,11 @@ const ftd = [{
     <h2>停車場：</h2>
     <p>成功大學醫學中心附屬停車場<span style="color: red;">（收費）</span>：臺南市北區勝利路138號</p>
     <p>成大醫院汽機車停車場<span style="color: red;">（收費）</span>：臺南市北區小東路35號</p>`,
+        items: [{
+            title: '瓶中信',
+        }, {
+            title: '核廢料',
+        }],
     },
 
     //  藝陣館 ftd[5]
@@ -225,6 +250,11 @@ const ftd = [{
     <p>竑穗興業有限公司建業停車場<span style="color: red;">（收費）</span>：臺南市中西區建業街58號</p>
     <p>延平郡王祠大埔街口路外停車場<span style="color: red;">（收費）</span>：臺南市中西區開山路與大埔街路口西側</p>
     <p>Times臺南忠義府前停車場<span style="color: red;">（收費）</span>：臺南市中西區忠義路一段96號旁空地</p>`,
+        items: [{
+            title: '劍獅雕像',
+        }, {
+            title: '破舊的嗩吶',
+        }],
     },
 
     //  生活館 ftd[6]
@@ -259,6 +289,11 @@ const ftd = [{
     <h2>停車場：</h2>
     <p>市立圖書館廣場停車場<span style="color: red;">（收費）</span>：臺南市北區公園北路3號</p>
     <p>公園路兵配場臨時路外公有停車場<span style="color: red;">（收費）</span>：臺南市北區公園路</p>`,
+        items: [{
+            title: '神秘的布幕',
+        }, {
+            title: '底片相機',
+        }],
     },
 
     //  體驗館 ftd[7]
@@ -295,5 +330,10 @@ const ftd = [{
     <p>國賓停車場<span style="color: red;">（收費）</span>：臺南市北區成功路2號地下3樓</p>
     <p>臺南俥亭成功停車場<span style="color: red;">（收費）</span>：臺南市北區成功路22巷3號</p>
     <p>文創停車場<span style="color: red;">（收費）</span>：臺南市東區北門路二段22號</p>`,
+        items: [{
+            title: '針線球',
+        }, {
+            title: '木槌',
+        }],
     }
 ];

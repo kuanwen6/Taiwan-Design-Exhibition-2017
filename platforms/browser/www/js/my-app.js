@@ -25,6 +25,10 @@ $$(document).on('deviceready', function () {
 $$('.button').on('click', function () {
   $$('#siteImg').attr('src', `img/${this.id}.png`);
   $$('#site-modal').css('display', 'block');
+
+  $$('#challengeImg').attr('src', 'img/challenge-board.png');
+  $$('#item0').attr('src', `img/collections/${this.id}-item0.png`);
+  $$('#item1').attr('src', `img/collections/${this.id}-item1.png`);
 });
 
 $$('#close-btn').on('click', () => {
@@ -44,22 +48,19 @@ $$('#siteImg').on('click', function (e) {
 
   if (y > pHeight * 0.743) {
     if (x > pWidth * 0.5) {  //  challenge
-      $$('#challengeImg').attr('src', 'img/challenge-board.png');
-      $$('#item1').attr('src', 'img/item-2.png');
-      $$('#item2').attr('src', 'img/item-2.png');
       $$('#site-modal').css('display', 'none');
       $$('#challenge-modal').css('display', 'block');
 
     } else {  //  information
       const sitePosition = this.src.indexOf('site');
-      const sitNum = parseInt(this.src.charAt(sitePosition + 4));
+      const siteNum = parseInt(this.src.charAt(sitePosition + 4));
       mainView.router.load({
         url: 'information.html',
         context: {
-          introduction: ftd[sitNum].introduction,
+          introduction: ftd[siteNum].introduction,
           navigation: navigationInfo,
-          traffic: ftd[sitNum].traffic,
-          parking: ftd[sitNum].parking,
+          traffic: ftd[siteNum].traffic,
+          parking: ftd[siteNum].parking,
         },
       });
     }
@@ -67,21 +68,37 @@ $$('#siteImg').on('click', function (e) {
 });
 
 //  click items open the picker modal with introduction
-$$('.items').on('click', () => {
+$$('.items').on('click', function () {
+  const sitePosition = this.src.indexOf('site');
+  const siteNum = parseInt(this.src.charAt(sitePosition + 4));
+  const itemNum = parseInt(this.id.charAt(4));
+
   if ($$('.picker-modal.modal-in').length > 0) {
     myApp.closeModal('.picker-modal.modal-in');
   } else {
-    myApp.pickerModal(
-      `<div class="picker-modal" style="height: auto;">
-        <div class="picker-modal-inner">
-          <div class="content-block" style="margin: 15px 0;">
-            <h2>祕法指環</h2>
-            <p>需要答對此關卡共5題答案</p>
-            <p><span style="color: red;">0</span> / 5題</p>
+    if (itemNum == 0) {
+      myApp.pickerModal( 
+        `<div class="picker-modal" style="height: auto;">
+          <div class="picker-modal-inner">
+            <div class="content-block" style="margin: 15px 0;">
+              <h2>${ftd[siteNum].items[itemNum].title}</h2>
+              <p>需要答對此關卡共2題答案</p>
+              <p><span style="color: red;">0</span> / 2題</p>
+            </div>
           </div>
-        </div>
-      </div>`
-  )}
+        </div>`)
+    } else {
+    myApp.pickerModal(  
+       `<div class="picker-modal" style="height: auto;">
+         <div class="picker-modal-inner">
+           <div class="content-block" style="margin: 15px 0;">
+             <h2>${ftd[siteNum].items[itemNum].title}</h2>
+             <p><span style="color: red;">開啟藍芽並到此展場附近便可以獲得</p>
+           </div>
+         </div>
+       </div>`)
+    }
+  }
 });
 
 //  if not click picker modal while its opening, close it
