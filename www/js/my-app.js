@@ -151,11 +151,12 @@ myApp.onPageInit('challenge', function (page) {
     $$('.answer > svg').css('margin-top', 'calc((100vh - 36vh) / 12)');
   } 
 
-  //  home button
+  /*  home button
   $$('.left').on('click' , () => {
     $$('.navbar').css('background-image' ,'none');
     $$('.navbar').css('background-size' ,'none');
   });
+  */
 
   //  loading page
   setTimeout(() => {
@@ -188,7 +189,7 @@ myApp.onPageInit('challenge', function (page) {
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
         <polyline class="path check" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
       </svg>`);
-      result.push('pass');
+      result[number] = 'pass';
     } else {
       $$(`#${this.id}`).attr('style', 'background-image: url("img/wrong-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
@@ -196,7 +197,7 @@ myApp.onPageInit('challenge', function (page) {
         <line class="path line" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
         <line class="path line" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
       </svg>`);
-      result.push('fail');
+      result[number] = 'fail';
     }
 
     // wait for answer correct/wrong animate
@@ -226,7 +227,7 @@ myApp.onPageInit('challenge', function (page) {
         setTimeout(() => {
           $$('.loading').html('第二題');
           $$(`#${this.id}`).attr('style', 'background-image: url("img/normal-btn.png") !important');
-        }, 1000);
+        }, 1200);
         setTimeout(() => {
           $$('#gameStart-modal').css('display', 'none');
         }, 4100);
