@@ -108,7 +108,8 @@ div[data-page='collection'] {
 .intro_bg {
     position: absolute;
     z-index: 3;
-    height: 100%;
+    width: 100%;
+    height: auto;
     display: none;
 }
 

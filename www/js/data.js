@@ -402,15 +402,15 @@ const planets = [{
     name: 'international',
     img: {
       top: '50%',
-      left: '150%',
-      height: '22%',
-      width: '65%',
+      left: '145%',
+      height: '20%',
+      width: '60%',
     },
     clickArea: {
       top: '50%',
-      left: '162%',
-      height: '22%',
-      width: '38%',
+      left: '155%',
+      height: '20%',
+      width: '34%',
     },
   },
   {
@@ -432,15 +432,15 @@ const planets = [{
     name: 'living',
     img: {
       top: '5%',
-      left: '165%',
+      left: '155%',
       height: '25%',
-      width: '47%',
+      width: '45%',
     },
     clickArea: {
       top: '9%',
-      left: '172%',
+      left: '162%',
       height: '17%',
-      width: '31%',
+      width: '28%',
     },
   },
   {
