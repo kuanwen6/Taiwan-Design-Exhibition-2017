@@ -30,7 +30,7 @@ myApp.onPageInit('home', function(page) {
 
   let i = 0;
   for (const planet of planets) {
-    var $$img = $$('<img class="planet" src="./img1/pavilion_logo/' + planet.name + '.png">');
+    var $$img = $$('<img class="planet" src="./img/pavilion_logo/' + planet.name + '.png">');
     $$img.css({ 'top': planet.img.top, 'left': planet.img.left, 'max-width': planet.img.width, 'max-height': planet.img.height });
     $$('.home').append($$img);
     var $$a = $$('<a href="#" class="planet_button" id="site' + (i++) + '"></a>');
@@ -157,7 +157,6 @@ myApp.onPageInit('home', function(page) {
       });
     }
   });
-
 });
 
 myApp.onPageInit('collection', function(page) {
@@ -166,10 +165,10 @@ myApp.onPageInit('collection', function(page) {
     for (var i = 1; i < 3; i++) {
       var $$div = $$('<div></div>');
       $$('.collections').append($$div);
-      $$div.append('<img src="./img1/collection/' + planet.name + '_' + i + '.png">');
+      $$div.append('<img src="./img/collection/' + planet.name + '_' + i + '.png">');
     }
   }
-  $$('#back_to_home').on('click', () => {
+  $$('.back').on('click', () => {
     mainView.hideNavbar(false);
   });
 });
@@ -184,6 +183,10 @@ myApp.onPageInit('information', function(page) {
   $$('.left').on('click', () => {
     $$('.navbar').css('background-image', 'none');
     $$('.navbar').css('background-size', 'none');
+  });
+
+  $$('.back').on('click', () => {
+    mainView.hideNavbar(false);
   });
 })
 

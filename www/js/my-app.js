@@ -157,7 +157,6 @@ myApp.onPageInit('home', function(page) {
       });
     }
   });
-
 });
 
 myApp.onPageInit('collection', function(page) {
@@ -169,7 +168,7 @@ myApp.onPageInit('collection', function(page) {
       $$div.append('<img src="./img/collection/' + planet.name + '_' + i + '.png">');
     }
   }
-  $$('#back_to_home').on('click', () => {
+  $$('.back').on('click', () => {
     mainView.hideNavbar(false);
   });
 });
@@ -184,6 +183,10 @@ myApp.onPageInit('information', function(page) {
   $$('.left').on('click', () => {
     $$('.navbar').css('background-image', 'none');
     $$('.navbar').css('background-size', 'none');
+  });
+
+  $$('.back').on('click', () => {
+    mainView.hideNavbar(false);
   });
 })
 

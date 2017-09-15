@@ -13,7 +13,7 @@ body {
 }
 
 .start_div {
-    background-image: url('../img1/start_bg.png');
+    background-image: url('../img/start_bg.png');
     background-size: cover;
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 div[data-page='collection'] {
-    background-image: url('../img1/collection_bg.png');
+    background-image: url('../img/collection_bg.png');
     background-size: cover;
 }
 
@@ -118,7 +118,7 @@ div[data-page='collection'] {
     left: 10%;
     padding: 6px 23px 30px 23px;
     z-index: 4;
-    background-image: url(../img1/ai_speech_bg.png);
+    background-image: url(../img/speech_bg/ai_speech_bg.png);
     background-size: 100% 100%;
     font-size: 16px;
     letter-spacing: 0.5px;
@@ -132,7 +132,7 @@ div[data-page='collection'] {
     left: 40%;
     padding: 6px 23px 30px 23px;
     z-index: 4;
-    background-image: url(../img1/man_speech_bg.png);
+    background-image: url(../img/speech_bg/man_speech_bg.png);
     background-size: 100% 100%;
     font-size: 16px;
     letter-spacing: 0.5px;
@@ -146,7 +146,7 @@ div[data-page='collection'] {
     left: 20%;
     padding: 30px 27px 5px 27px;
     z-index: 4;
-    background-image: url(../img1/ai_speech_bg2.png);
+    background-image: url(../img/speech_bg/ai_speech_bg2.png);
     background-size: 100% 100%;
     font-size: 16px;
     letter-spacing: 1.1px;
