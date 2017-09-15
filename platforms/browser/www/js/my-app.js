@@ -26,7 +26,7 @@ $$('.button').on('click', function () {
   $$('#siteImg').attr('src', `img/${this.id}.png`);
   $$('#site-modal').css('display', 'block');
 
-  $$('#challengeImg').attr('src', 'img/challenge-board.png');
+  $$('#challengeImg').attr('src', `img/${this.id}-challenge.png`);
   $$('#item0').attr('src', `img/collections/${this.id}-item0.png`);
   $$('#item1').attr('src', `img/collections/${this.id}-item1.png`);
 });
