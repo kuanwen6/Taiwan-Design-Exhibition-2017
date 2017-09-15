@@ -21,17 +21,19 @@ $$(document).on('deviceready', function() {
     console.log("App has launched " + ++localStorage.launchCount + " times.")
   };
 
-  mainView.hideNavbar();
+  mainView.hideNavbar(false);
 });
 
 
 myApp.onPageInit('home', function(page) {
+  mainView.hideNavbar(false);
+
   let i = 0;
   for (const planet of planets) {
-    var $$img = $$('<img class="planet" src="pavilion_logo/' + planet.name + '.png">');
+    var $$img = $$('<img class="planet" src="./img1/pavilion_logo/' + planet.name + '.png">');
     $$img.css({ 'top': planet.img.top, 'left': planet.img.left, 'max-width': planet.img.width, 'max-height': planet.img.height });
     $$('.home').append($$img);
-    var $$a = $$('<a href="#" class="button" id="site' + (i++) + '"></a>');
+    var $$a = $$('<a href="#" class="planet_button" id="site' + (i++) + '"></a>');
     $$a.css({ 'top': planet.clickArea.top, 'left': planet.clickArea.left, 'width': planet.clickArea.width, 'height': planet.clickArea.height });
     $$('.home').append($$a);
   }
@@ -60,35 +62,35 @@ myApp.onPageInit('home', function(page) {
     });
   }
 
-  $$('.button').on('click', function() {
+  $$('.planet_button').on('click', function() {
     $$('#siteImg').attr('src', `img/${this.id}.png`);
     $$('#site-modal').css('display', 'block');
-  
+
     $$('#challengeImg').attr('src', `img/${this.id}-challenge.png`);
     $$('#item0').attr('src', `img/collections/${this.id}-item0.png`);
     $$('#item1').attr('src', `img/collections/${this.id}-item1.png`);
   });
-  
+
   $$('#close-btn').on('click', () => {
     $$('#site-modal').css('display', 'none');
   })
-  
+
   $$('#close-challenge-btn').on('click', () => {
     $$('#challenge-modal').css('display', 'none');
   })
-  
+
   $$('#siteImg').on('click', function(e) {
     const pHeight = $('#siteImg').height();
     const pWidth = $('#siteImg').width();
     const pOffset = $('#siteImg').offset();
     const y = e.pageY - pOffset.top;
     const x = e.pageX - pOffset.left;
-  
+
     if (y > pHeight * 0.743) {
       if (x > pWidth * 0.5) { //  challenge
         $$('#site-modal').css('display', 'none');
         $$('#challenge-modal').css('display', 'block');
-  
+
       } else { //  information
         const sitePosition = this.src.indexOf('site');
         const siteNum = parseInt(this.src.charAt(sitePosition + 4));
@@ -104,12 +106,12 @@ myApp.onPageInit('home', function(page) {
       }
     }
   });
-  
+
   $$('.items').on('click', function() {
     const sitePosition = this.src.indexOf('site');
     const siteNum = parseInt(this.src.charAt(sitePosition + 4));
     const itemNum = parseInt(this.id.charAt(4));
-  
+
     if ($$('.picker-modal.modal-in').length > 0) {
       myApp.closeModal('.picker-modal.modal-in');
     } else {
@@ -137,18 +139,18 @@ myApp.onPageInit('home', function(page) {
       }
     }
   });
-  
+
   $$(window).on('click', (event) => {
     if (!$(event.target).closest('.picker-modal').length && !$(event.target).closest('.items').length && $$('.picker-modal.modal-in').length > 0) {
       myApp.closeModal('.picker-modal.modal-in');
     }
   });
-  
+
   $$('#challengeImg').on('click', (e) => {
     const pHeight = $('#challengeImg').height();
     const pOffset = $('#challengeImg').offset();
     const y2 = e.pageY - pOffset.top;
-  
+
     if (y2 > pHeight * 0.855) {
       mainView.router.load({
         url: 'challenge.html',
@@ -159,11 +161,12 @@ myApp.onPageInit('home', function(page) {
 });
 
 myApp.onPageInit('collection', function(page) {
+  mainView.hideNavbar(false);
   for (const planet of planets) {
     for (var i = 1; i < 3; i++) {
       var $$div = $$('<div></div>');
       $$('.collections').append($$div);
-      $$div.append('<img src="./img1/collection/' + planet.name + '_' + i +'.png">');
+      $$div.append('<img src="./img1/collection/' + planet.name + '_' + i + '.png">');
     }
   }
 });
@@ -171,6 +174,7 @@ myApp.onPageInit('collection', function(page) {
 
 
 myApp.onPageInit('information', function(page) {
+  mainView.showNavbar(false);
   $$('.navbar').css('background-image', "url('img/information-background.png')");
   $$('.navbar').css('background-size', 'cover');
 
@@ -181,6 +185,8 @@ myApp.onPageInit('information', function(page) {
 })
 
 myApp.onPageInit('challenge', function(page) {
+  mainView.showNavbar(false);
+
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
   $$('.navbar').css('background-size', 'none');
