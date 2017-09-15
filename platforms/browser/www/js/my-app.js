@@ -169,6 +169,9 @@ myApp.onPageInit('collection', function(page) {
       $$div.append('<img src="./img1/collection/' + planet.name + '_' + i + '.png">');
     }
   }
+  $$('#back_to_home').on('click', () => {
+    mainView.hideNavbar(false);
+  });
 });
 
 

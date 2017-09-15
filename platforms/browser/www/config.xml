@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>designexpo</name>
+<widget id="edu.ncku.designexpo" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>2017台灣設計展</name>
     <description>
-        A basic Framework7 template for PhoneGap.
+        2017台灣設計展好棒！
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="F74036108@mail.ncku.edu.tw" href="https://github.com/winone520/Taiwan-Design-Exhibition-2017">
+        NCKU CHAMPION TEAM
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -16,7 +16,8 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <splash src="splash.png" />
-    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="AutoHideSplashScreen" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
