@@ -11,6 +11,11 @@ var mainView = myApp.addView('.view-main', {
 });
 
 
+$$(document).on('backbutton', function() {
+  var view = myApp.getCurrentView();
+  view.router.back();
+});
+
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
   var applaunchCount = window.localStorage.getItem('launchCount');
@@ -310,5 +315,4 @@ myApp.onPageInit('challenge', function(page) {
       }
     }, 2500);
   });
-
 });
