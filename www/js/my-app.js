@@ -1,28 +1,27 @@
-// Initialize app
-var myApp = new Framework7({
-  statusbarOverlay: false,
-  template7Pages: true,
-  swipeBackPage: false,
-});
+var myApp = new Framework7();
 
-
-// If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
-// Add view
 var mainView = myApp.addView('.view-main', {
-  // Because we want to use dynamic navbar, we need to enable it for this view:
-  dynamicNavbar: true,
+  dynamicNavbar: true
 });
 
-// Handle Cordova Device Ready Event
-$$(document).on('deviceready', function () {
+
+$$(document).on('deviceready', function() {
   console.log("Device is ready!");
+  var applaunchCount = window.localStorage.getItem('launchCount');
+
+  if (!applaunchCount) {
+    window.localStorage.setItem('launchCount', 1);
+  } else {
+    console.log("App has launched " + ++localStorage.launchCount + " times.")
+  };
+
+  mainView.hideNavbar();
 });
 
 
-
-$$('.button').on('click', function () {
+$$('.button').on('click', function() {
   $$('#siteImg').attr('src', `img/${this.id}.png`);
   $$('#site-modal').css('display', 'block');
 
@@ -39,7 +38,7 @@ $$('#close-challenge-btn').on('click', () => {
   $$('#challenge-modal').css('display', 'none');
 })
 
-$$('#siteImg').on('click', function (e) {
+$$('#siteImg').on('click', function(e) {
   const pHeight = $('#siteImg').height();
   const pWidth = $('#siteImg').width();
   const pOffset = $('#siteImg').offset();
@@ -47,11 +46,11 @@ $$('#siteImg').on('click', function (e) {
   const x = e.pageX - pOffset.left;
 
   if (y > pHeight * 0.743) {
-    if (x > pWidth * 0.5) {  //  challenge
+    if (x > pWidth * 0.5) { //  challenge
       $$('#site-modal').css('display', 'none');
       $$('#challenge-modal').css('display', 'block');
 
-    } else {  //  information
+    } else { //  information
       const sitePosition = this.src.indexOf('site');
       const siteNum = parseInt(this.src.charAt(sitePosition + 4));
       mainView.router.load({
@@ -67,8 +66,7 @@ $$('#siteImg').on('click', function (e) {
   }
 });
 
-//  click items open the picker modal with introduction
-$$('.items').on('click', function () {
+$$('.items').on('click', function() {
   const sitePosition = this.src.indexOf('site');
   const siteNum = parseInt(this.src.charAt(sitePosition + 4));
   const itemNum = parseInt(this.id.charAt(4));
@@ -77,7 +75,7 @@ $$('.items').on('click', function () {
     myApp.closeModal('.picker-modal.modal-in');
   } else {
     if (itemNum == 0) {
-      myApp.pickerModal( 
+      myApp.pickerModal(
         `<div class="picker-modal" style="height: auto;">
           <div class="picker-modal-inner">
             <div class="content-block" style="margin: 15px 0;">
@@ -88,8 +86,8 @@ $$('.items').on('click', function () {
           </div>
         </div>`)
     } else {
-    myApp.pickerModal(  
-       `<div class="picker-modal" style="height: auto;">
+      myApp.pickerModal(
+        `<div class="picker-modal" style="height: auto;">
          <div class="picker-modal-inner">
            <div class="content-block" style="margin: 15px 0;">
              <h2>${ftd[siteNum].items[itemNum].title}</h2>
@@ -101,13 +99,11 @@ $$('.items').on('click', function () {
   }
 });
 
-//  if not click picker modal while its opening, close it
 $$(window).on('click', (event) => {
   if (!$(event.target).closest('.picker-modal').length && !$(event.target).closest('.items').length && $$('.picker-modal.modal-in').length > 0) {
     myApp.closeModal('.picker-modal.modal-in');
   }
 });
-
 
 $$('#challengeImg').on('click', (e) => {
   const pHeight = $('#challengeImg').height();
@@ -121,21 +117,72 @@ $$('#challengeImg').on('click', (e) => {
   }
 });
 
-myApp.onPageInit('information', function (page) {
-  $$('.navbar').css('background-image' ,"url('img/information-background.png')");
-  $$('.navbar').css('background-size' ,'cover');
 
-  $$('.left').on('click' , () => {
-    $$('.navbar').css('background-image' ,'none');
-    $$('.navbar').css('background-size' ,'none');
+
+myApp.onPageInit('home', function(page) {
+  let i = 0;
+  for (const planet of planets) {
+    var $$img = $$('<img class="planet" src="pavilion_logo/' + planet.name + '.png">');
+    $$img.css({ 'top': planet.img.top, 'left': planet.img.left, 'max-width': planet.img.width, 'max-height': planet.img.height });
+    $$('.home').append($$img);
+    var $$a = $$('<a href="#" class="button" id="site' + (i++) + '"></a>');
+    $$a.css({ 'top': planet.clickArea.top, 'left': planet.clickArea.left, 'width': planet.clickArea.width, 'height': planet.clickArea.height });
+    $$('.home').append($$a);
+  }
+
+  var applaunchCount = window.localStorage.getItem('launchCount');
+
+  if (applaunchCount > 1) {
+    $$('.intro_bg').show();
+    setTimeout(function() {
+      $$('.ai_speech').show();
+    }, 700);
+
+    $$(window).once('click', (event) => {
+      $$('.man_speech').show();
+      $$(window).once('click', (event) => {
+        $$('.intro_bg').hide();
+        $$('.ai_speech').hide();
+        $$('.man_speech').hide();
+        setTimeout(function() {
+          $$('.ai_speech2').show();
+        }, 500);
+        $$(window).once('click', (event) => {
+          $$('.ai_speech2').hide();
+        });
+      });
+    });
+  }
+
+});
+
+myApp.onPageInit('collection', function(page) {
+  for (const planet of planets) {
+    for (var i = 1; i < 3; i++) {
+      var $$div = $$('<div></div>');
+      $$('.collections').append($$div);
+      $$div.append('<img src="./img1/collection/' + planet.name + '_' + i +'.png">');
+    }
+  }
+});
+
+
+
+myApp.onPageInit('information', function(page) {
+  $$('.navbar').css('background-image', "url('img/information-background.png')");
+  $$('.navbar').css('background-size', 'cover');
+
+  $$('.left').on('click', () => {
+    $$('.navbar').css('background-image', 'none');
+    $$('.navbar').css('background-size', 'none');
   });
 })
 
-myApp.onPageInit('challenge', function (page) {
+myApp.onPageInit('challenge', function(page) {
   //  navbar background, opacity 0
-  $$('.navbar').css('background-image' ,'none');
-  $$('.navbar').css('background-size' ,'none');
-  $$('.navbar').css('background-color' ,'rgba(0, 0, 0, 0)');
+  $$('.navbar').css('background-image', 'none');
+  $$('.navbar').css('background-size', 'none');
+  $$('.navbar').css('background-color', 'rgba(0, 0, 0, 0)');
 
   if (($(window).height() / $(window).width()) > 1.73) { // device too long
     $$('.question').css({
@@ -149,7 +196,7 @@ myApp.onPageInit('challenge', function (page) {
     });
     $$('.options > .button').css('line-height', 'calc((100vh - 36vh) / 4);');
     $$('.answer > svg').css('margin-top', 'calc((100vh - 36vh) / 12)');
-  } 
+  }
 
   /*  home button
   $$('.left').on('click' , () => {
@@ -170,7 +217,10 @@ myApp.onPageInit('challenge', function (page) {
   let number = 0;
 
   const question = ['請問「主題館」的前身是成大的何種建築?', '請問「主題館」的設計概念下列何者為非?'];
-  const options = [['博物館', '圖書館', '資訊系館', '體育館'], ['紡織技術', '循環經濟', '國際外交', '雲端智能']];
+  const options = [
+    ['博物館', '圖書館', '資訊系館', '體育館'],
+    ['紡織技術', '循環經濟', '國際外交', '雲端智能']
+  ];
   const answer = ['answer2', 'answer3'];
   let result = [];
 
@@ -180,7 +230,7 @@ myApp.onPageInit('challenge', function (page) {
     $$(`#answer${i+1}`).html(options[number][i]);
   }
 
-  $$('.answer').on('click', function answerClicked() {    
+  $$('.answer').on('click', function answerClicked() {
     $$('.loading').html(' ');
     $$('.answer').off('click', answerClicked); // lock the button
     if (this.id === answer[number]) {
@@ -202,7 +252,7 @@ myApp.onPageInit('challenge', function (page) {
 
     // wait for answer correct/wrong animate
     setTimeout(() => {
-      if (number >= 1) {  //  end, jump to result board
+      if (number >= 1) { //  end, jump to result board
         $$('#gameStart-modal').css('display', 'block');
         $$('.custom-start-modal').css({
           'animation': 'fadeOut 0.6s ease-in-out',
@@ -231,11 +281,11 @@ myApp.onPageInit('challenge', function (page) {
         setTimeout(() => {
           $$('#gameStart-modal').css('display', 'none');
         }, 4100);
-        
+
         //  next question
         setTimeout(() => {
           number++;
-          
+
           $$('#questionTextArea').html(question[number]);
           $$('#question-number').html(`Q${number+1}:`);
           for (let i = 0; i < 4; i += 1) {

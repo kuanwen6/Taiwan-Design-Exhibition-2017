@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html class="with-statusbar-overlay">
+
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src 'self' *; script-src 'unsafe-inline' *;">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-
-    <!-- Your app title -->
-    <title>2017 台灣設計展APP</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <title>2017 台灣設計展</title>
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
-    <link rel="stylesheet" href="lib/framework7/css/framework7-icons.css">
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+    <div class="statusbar-overlay"></div>
     <div class="views">
         <div class="view view-main">
             <div class="navbar no-border">
@@ -25,56 +25,19 @@
                     <div class="center sliding">2017 台灣設計展</div>
                 </div>
             </div>
-            <div class="pages navbar-through toolbar-through">
-                <div data-page="index" class="page">
-                    <div class="page-content">
-                        <div class="content-block">
-                            <p class="buttons-row">
-                                <a href="#" class="button" id="site0">主題館</a>
-                                <a href="#" class="button" id="site1">南風館</a>
-                                <a href="#" class="button" id="site2">工藝館</a>
-                            </p>
-                            <p class="buttons-row">
-                                <a href="#" class="button" id="site3">新銳館</a>
-                                <a href="#" class="button" id="site4">國際館</a>
-                                <a href="#" class="button" id="site5">藝陣館</a>
-                            </p>
-                            <p class="buttons-row">
-                                <a href="#" class="button" id="site6">生活館</a>
-                                <a href="#" class="button" id="site7">體驗館</a>
-                            </p>
-                
-                            
-                                
-                        </div>
+            <div class="pages">
+                <div data-page="index" class="page start_div">
+                    <img src="img1/logo.png" class="logo">
+                    <div class="start_btn">
+                        <a href="home.html"><img src="img1/start_btn.png"></a>
                     </div>
-                    <div id="site-modal" class="custom-modal">
-                        <div class="custom-modal-content">
-                            <img id="close-btn" style="z-index: 5; width: 12%;position: absolute;right: -4%;top: -4%;" src="img/Close Btn.png">
-                            <img style="width: 100%;" id="siteImg">
-                        </div>
-                        
-                    </div>
-                
-                    <div id="challenge-modal" class="custom-modal">
-                        <div class="challenge-modal-content">
-                            <img id="close-challenge-btn" style="z-index: 5; width: 12%;position: absolute;right: -4%;top: -4%;" src="img/Close Btn.png">
-                            <img style="width: 100%;" id="challengeImg">
-                            <img class="items" id="item0" style="position: absolute;  height: 22%; top: 59.5%;left: calc((70vw * 1.22 * 0.22) / 2);">
-                            <img class="items" id="item1" style="position: absolute;  height: 22%; top: 59.5%;left: calc(50% + (70vw * 1.22 * 0.22) / 2);">
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
-
         </div>
-       
     </div>
-    
-
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
 </body>
