@@ -63,10 +63,10 @@ myApp.onPageInit('home', function(page) {
   }
 
   $$('.planet_button').on('click', function() {
-    $$('#siteImg').attr('src', `img/${this.id}.png`);
+    $$('#siteImg').attr('src', `img/ftd/${this.id}.png`);
     $$('#site-modal').css('display', 'block');
 
-    $$('#challengeImg').attr('src', `img/${this.id}-challenge.png`);
+    $$('#challengeImg').attr('src', `img/challenge-board/${this.id}-challenge.png`);
     $$('#item0').attr('src', `img/collections/${this.id}-item0.png`);
     $$('#item1').attr('src', `img/collections/${this.id}-item1.png`);
   });
@@ -175,7 +175,7 @@ myApp.onPageInit('collection', function(page) {
 
 myApp.onPageInit('information', function(page) {
   mainView.showNavbar(false);
-  $$('.navbar').css('background-image', "url('img/information-background.png')");
+  $$('.navbar').css('background-image', "url('img/device-background/information-background.png')");
   $$('.navbar').css('background-size', 'cover');
 
   $$('.left').on('click', () => {
@@ -242,14 +242,14 @@ myApp.onPageInit('challenge', function(page) {
     $$('.loading').html(' ');
     $$('.answer').off('click', answerClicked); // lock the button
     if (this.id === answer[number]) {
-      $$(`#${this.id}`).attr('style', 'background-image: url("img/correct-btn.png") !important');
+      $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/correct-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
         <polyline class="path check" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
       </svg>`);
       result[number] = 'pass';
     } else {
-      $$(`#${this.id}`).attr('style', 'background-image: url("img/wrong-btn.png") !important');
+      $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/wrong-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
         <line class="path line" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
@@ -270,7 +270,7 @@ myApp.onPageInit('challenge', function(page) {
         $$('.custom-start-modal-content').html(`<img style="width: 100%;" id="finish-board" src="img/result.png">
           <img src="img/${result[0]}.png" style="position: absolute; width: 40%; top:calc(90vw * 0.185 - 2.5vw); left: 40%;">
           <img src="img/${result[1]}.png" style="position: absolute; width: 40%; top:calc(90vw * 0.5 - 2.5vw); left: 40%;">
-          <img id="ok-btn" src="img/ok-btn.png" style="position: absolute; width: 45%; top:calc(90vw * 0.75); left: 27.5%;">
+          <img id="ok-btn" src="img/btn-background/ok-btn.png" style="position: absolute; width: 45%; top:calc(90vw * 0.75); left: 27.5%;">
         `);
 
         $$('#ok-btn').on('click', () => {
@@ -284,7 +284,7 @@ myApp.onPageInit('challenge', function(page) {
         $$('#gameStart-modal').css('display', 'block');
         setTimeout(() => {
           $$('.loading').html('第二題');
-          $$(`#${this.id}`).attr('style', 'background-image: url("img/normal-btn.png") !important');
+          $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/normal-btn.png") !important');
         }, 1200);
         setTimeout(() => {
           $$('#gameStart-modal').css('display', 'none');

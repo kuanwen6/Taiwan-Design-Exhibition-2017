@@ -179,7 +179,7 @@ div[data-page='collection'] {
     font-size: 15px !important;
     height: 100%;
     line-height: 32px;
-    background-image: url('../img/tab-btn.png');
+    background-image: url('../img/btn-background/tab-btn.png');
     background-size: 100% 100%;
 }
 
@@ -191,7 +191,7 @@ div[data-page='collection'] {
 
 
 .subnavbar .button.active {
-    background-image: url('../img/tab-active-btn.png');
+    background-image: url('../img/btn-background/tab-active-btn.png');
     background-size: cover;
 }
 
@@ -355,7 +355,7 @@ div[data-page='collection'] {
     margin: 0 auto;
     border-radius: 0px !important;
 
-    background-image: url('../img/normal-btn.png') !important;
+    background-image: url('../img/btn-background/normal-btn.png') !important;
     background-size: 100% 100% !important;
 }
 
@@ -481,7 +481,7 @@ div[data-page='collection'] {
     /* Full height */
     overflow: auto;
     /* Enable scroll if needed */
-    background-image: url('../img/result-background.png');
+    background-image: url('../img/device-background/result-background.png');
     background-size: cover;
     /* Black w/ opacity */
     /*
