@@ -32,7 +32,7 @@ $$(document).on('deviceready', function() {
 
 myApp.onPageBeforeInit('home', function(page) {
   if (applaunchCount >= 1) {
-  //  $$('.intro_bg').hide();
+    //  $$('.intro_bg').hide();
   }
 });
 
@@ -152,9 +152,9 @@ myApp.onPageInit('home', function(page) {
     if (!$(event.target).closest('.picker-modal').length && !$(event.target).closest('.items').length && $$('.picker-modal.modal-in').length > 0) {
       myApp.closeModal('.picker-modal.modal-in');
     }
-  });  
+  });
 
-  $$('#challengeImg').on('click', function (e) {
+  $$('#challengeImg').on('click', function(e) {
     const pHeight = $('#challengeImg').height();
     const pOffset = $('#challengeImg').offset();
     const y2 = e.pageY - pOffset.top;
