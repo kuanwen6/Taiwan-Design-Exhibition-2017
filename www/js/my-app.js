@@ -179,6 +179,7 @@ myApp.onPageInit('home', function(page) {
    * i.e. challenge page
    */
   beacon_util.startScanForBeacons();
+  
 });
 
 myApp.onPageInit('collection', function(page) {

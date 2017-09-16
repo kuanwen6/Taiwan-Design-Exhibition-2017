@@ -36,13 +36,13 @@ beacon_util.init_beacon_detection = function()
     .fail()
     .done();
 
-    //Retrieve Collection Record from local storage
-    for(var i = 0; i < ftd.length; i++)
-    {
-      var collection = 'Collection' + i.toString() + '2';
-      beacon_util.collections[collection] = window.localStorage.getItem(collection);
-    }
-    beacon_util.setIBeaconCallback();
+  //Retrieve Collection Record from local storage
+  for(var i = 0; i < ftd.length; i++)
+  {
+    var collection = 'Collection' + i.toString() + '2';
+    beacon_util.collections[collection] = window.localStorage.getItem(collection);
+  }
+  beacon_util.setIBeaconCallback();
 }
 
 
@@ -182,15 +182,14 @@ beacon_util.didRangeBeaconsInRegion = function(pluginResult)
           if( ftd[station].beacons.indexOf(platformID) != -1)
           {
             // Get the collection of the station 
-            $$('.notification-custom').on('click', function () {
-              myApp.addNotification({
-                  message: '你已獲得' + station + '的收藏品: '+ ftd[station].items[1].title,
-                  button: {
-                      text: 'OK',
-                      color: 'yellow'
-                  }
-              });
+            myApp.addNotification({
+                message: '你已獲得' + station + '的收藏品: '+ ftd[station].items[1].title,
+                button: {
+                    text: 'OK',
+                    color: 'yellow'
+                }
             });
+            
             beacon_util.collections[collection] = true;
             window.localStorage.setItem(collection, true);
             
