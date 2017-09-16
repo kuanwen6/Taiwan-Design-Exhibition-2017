@@ -10,6 +10,8 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: true
 });
 
+var applaunchCount = window.localStorage.getItem('launchCount');
+
 
 $$(document).on('backbutton', function() {
   var view = myApp.getCurrentView();
@@ -18,7 +20,6 @@ $$(document).on('backbutton', function() {
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
-  var applaunchCount = window.localStorage.getItem('launchCount');
 
   if (!applaunchCount) {
     window.localStorage.setItem('launchCount', 1);
@@ -26,10 +27,14 @@ $$(document).on('deviceready', function() {
     console.log("App has launched " + ++localStorage.launchCount + " times.")
   };
 
-  mainView.hideNavbar(false);
-
   // Setup beacon detection
   beacon_util.init_beacon_detection();
+});
+
+myApp.onPageBeforeInit('home', function(page) {
+  if (applaunchCount >= 1) {
+    //  $$('.intro_bg').hide();
+  }
 });
 
 myApp.onPageInit('home', function(page) {
@@ -45,10 +50,7 @@ myApp.onPageInit('home', function(page) {
     $$('.home').append($$a);
   }
 
-  var applaunchCount = window.localStorage.getItem('launchCount');
-
   if (applaunchCount >= 1) {
-    $$('.intro_bg').show();
     setTimeout(function() {
       $('.ai_speech').fadeIn(500);
     }, 700);
@@ -151,9 +153,9 @@ myApp.onPageInit('home', function(page) {
     if (!$(event.target).closest('.picker-modal').length && !$(event.target).closest('.items').length && $$('.picker-modal.modal-in').length > 0) {
       myApp.closeModal('.picker-modal.modal-in');
     }
-  });  
+  });
 
-  $$('#challengeImg').on('click', function (e) {
+  $$('#challengeImg').on('click', function(e) {
     const pHeight = $('#challengeImg').height();
     const pOffset = $('#challengeImg').offset();
     const y2 = e.pageY - pOffset.top;
@@ -181,6 +183,7 @@ myApp.onPageInit('collection', function(page) {
       $$div.append('<img src="./img/collection/' + planet.name + '_' + i + '.png">');
     }
   }
+
   $$('.back').on('click', () => {
     mainView.hideNavbar(false);
   });
@@ -198,9 +201,11 @@ myApp.onPageInit('information', function(page) {
     $$('.navbar').css('background-size', 'none');
   });
 
+
   $$('.back').on('click', () => {
     mainView.hideNavbar(false);
   });
+
 })
 
 myApp.onPageInit('challenge', function(page) {
