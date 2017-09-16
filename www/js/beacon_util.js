@@ -8,9 +8,11 @@ beacon_util.beaconRegions =
 	}
 ];
 
+// Record the received collections (Only for Tests, use local storage instead)
+beacon_util.collections = {}
+
 beacon_util.init_beacon_detection = function()
 {
-  console.log("HI BEACOM");
 	// Specify a shortcut for the location manager that
 	// has the iBeacon functions.
 	window.locationManager = cordova.plugins.locationManager;
@@ -20,24 +22,27 @@ beacon_util.init_beacon_detection = function()
     	console.log("isEnabled: " + isEnabled);
     	if (!isEnabled) {
     		if(device.platform == 'Android'){
-    			myApp.confirm('開啟藍牙就能獲得特殊收藏品哦！！是否開啟？',
+    			myApp.confirm('開啟藍牙就能獲得特殊收藏品哦！！是否開啟？', '啟用藍芽？'
     				function () {
     					locationManager.enableBluetooth();
     				}
     			);
     	  }
         else{
-        	myApp.alert('開啟藍牙就能獲得特殊收藏品哦！！');
+        	myApp.alert('開啟藍牙就能獲得特殊收藏品哦！！', '啟用藍芽？');
         }
       }
     })
     .fail()
     .done();
 
+    //Retrieve Collection Record from local storage
+    for(var i = 0; i < ftd.length; i++)
+    {
+      var collection = 'Collection' + i.toString() + '2';
+      beacon_util.collections[collection] = window.localStorage.getItem(collection);
+    }
     beacon_util.setIBeaconCallback();
-
-    // Start tracking beacons!
-  	beacon_util.startScanForBeacons();
 }
 
 
@@ -152,9 +157,6 @@ beacon_util.mappingShortUUID = function(UUID)
   
 }
 
-// Record the received rewards (Only for Tests, use local storage instead)
-beacon_util.rewardList = {}
-
 // Actions when any beacon is in range
 beacon_util.didRangeBeaconsInRegion = function(pluginResult)
 { 
@@ -174,15 +176,23 @@ beacon_util.didRangeBeaconsInRegion = function(pluginResult)
     {
       for (var station = 0; station < ftd.length; station++)
       {
-        if( !beacon_util.rewardList['R'+station.toString()] )
+        var collection = 'Collection' + station.toString() + '2';
+        if( !beacon_util.collections[collection] )
         {
           if( ftd[station].beacons.indexOf(platformID) != -1)
           {
-            // Get the reward of the station 
-            myApp.alert('你已獲得' + station + '的收藏品: '+ ftd[station].items[1].title);
-
-            // Only for Tests!!!
-            beacon_util.rewardList['R'+station.toString()] = true;
+            // Get the collection of the station 
+            $$('.notification-custom').on('click', function () {
+              myApp.addNotification({
+                  message: '你已獲得' + station + '的收藏品: '+ ftd[station].items[1].title,
+                  button: {
+                      text: 'OK',
+                      color: 'yellow'
+                  }
+              });
+            });
+            beacon_util.collections[collection] = true;
+            window.localStorage.setItem(collection, true);
             
             break;
           }

@@ -25,7 +25,8 @@ $$(document).on('deviceready', function() {
   } else {
     console.log("App has launched " + ++localStorage.launchCount + " times.")
   };
-  
+
+  // Setup beacon detection
   beacon_util.init_beacon_detection();
 
   mainView.hideNavbar(false);
@@ -164,6 +165,14 @@ myApp.onPageInit('home', function(page) {
       });
     }
   });
+
+  /**
+   * Starts Beacon Scan
+   * Use beacon_util.stopScanForBeacons() 
+   * when you want to disable detection in some pages
+   * i.e. challenge page
+   */
+  beacon_util.startScanForBeacons();
 });
 
 myApp.onPageInit('collection', function(page) {
