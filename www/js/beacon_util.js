@@ -183,13 +183,10 @@ beacon_util.didRangeBeaconsInRegion = function(pluginResult)
           {
             // Get the collection of the station 
             myApp.addNotification({
+                title: '獲得收藏品',
                 message: '你已獲得' + station + '的收藏品: '+ ftd[station].items[1].title,
-                button: {
-                    text: 'OK',
-                    color: 'yellow'
-                }
             });
-            
+
             beacon_util.collections[collection] = true;
             window.localStorage.setItem(collection, true);
             
