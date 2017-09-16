@@ -45,20 +45,20 @@ myApp.onPageInit('home', function(page) {
 
   var applaunchCount = window.localStorage.getItem('launchCount');
 
-  if (applaunchCount > 1) {
+  if (applaunchCount >= 1) {
     $$('.intro_bg').show();
     setTimeout(function() {
-      $$('.ai_speech').show();
+      $('.ai_speech').fadeIn(500);
     }, 700);
 
     $$(window).once('click', (event) => {
-      $$('.man_speech').show();
+      $('.man_speech').fadeIn(500);
       $$(window).once('click', (event) => {
         $$('.intro_bg').hide();
         $$('.ai_speech').hide();
         $$('.man_speech').hide();
         setTimeout(function() {
-          $$('.ai_speech2').show();
+          $('.ai_speech2').fadeIn(500);
         }, 500);
         $$(window).once('click', (event) => {
           $$('.ai_speech2').hide();
