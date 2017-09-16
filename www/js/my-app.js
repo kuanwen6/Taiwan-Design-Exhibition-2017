@@ -23,8 +23,10 @@ $$(document).on('deviceready', function() {
 
   if (!applaunchCount) {
     window.localStorage.setItem('launchCount', 1);
+    applaunchCount = 1;
   } else {
-    console.log("App has launched " + ++localStorage.launchCount + " times.")
+    applaunchCount = ++localStorage.launchCount;
+    console.log("App has launched " + applaunchCount + " times.");
   };
 
 });

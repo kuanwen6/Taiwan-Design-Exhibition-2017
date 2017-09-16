@@ -17,8 +17,6 @@ body {
   height: 100vh;
   background-image: url('../img/start_bg.png');
   background-size: cover;
-  z-index: 501;
-  position: absolute;
 }
 
 .logo {

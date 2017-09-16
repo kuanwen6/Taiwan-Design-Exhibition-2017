@@ -22,29 +22,20 @@
         <preference name="android-targetSdkVersion" value="24" />
         <preference name="SplashMaintainAspectRatio" value="false" />
         <preference name="SplashShowOnlyFirstTime" value="false" />
-        <!--    <splash src="res/screen/android/splash-land-hdpi.png" density="land-hdpi" />
-        <splash src="res/screen/android/splash-land-ldpi.png" density="land-ldpi" />
-        <splash src="res/screen/android/splash-land-mdpi.png" density="land-mdpi" />
-        <splash src="res/screen/android/splash-land-xhdpi.png" density="land-xhdpi" />
-        <splash src="res/screen/android/splash-port-hdpi.png" density="port-hdpi" />
-        <splash src="res/screen/android/splash-port-ldpi.png" density="port-ldpi" />
-        <splash src="res/screen/android/splash-port-mdpi.png" density="port-mdpi" />
-        <splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi" />-->
     </platform>
     <platform name="ios">
         <preference name="target-device" value="handset" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <!--    <preference name="BackupWebStorage" value="none" /> -->
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
         <preference name="FadeSplashScreen" value="true" />
         <preference name="FadeSplashScreenDuration" value="750" />
     </platform>
-    <config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" mode="replace">
-        <false/>
-    </config-file>
-    <config-file platform="ios" parent="UIStatusBarHidden" mode="replace">
-        <true/>
+    <gap:config-file overwrite="true" parent="UIViewControllerBasedStatusBarAppearance" platform="ios">
+        <false />
+    </gap:config-file>
+    <config-file mode="replace" parent="UIStatusBarHidden" platform="ios">
+        <true />
     </config-file>
     <splash src="img/splash.png" />
     <preference name="orientation" value="portrait" />
@@ -57,4 +48,5 @@
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
+    <plugin name="cordova-custom-config" spec="~4.0.2" />
 </widget>
