@@ -182,7 +182,7 @@ beacon_util.didRangeBeaconsInRegion = function(pluginResult)
             myApp.alert('你已獲得' + station + '的收藏品: '+ ftd[station].items[1].title);
 
             // Only for Tests!!!
-            beacon_util.rewardList('R'+station.toString()) = true;
+            beacon_util.rewardList['R'+station.toString()] = true;
             
             break;
           }
