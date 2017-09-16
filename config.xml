@@ -22,20 +22,11 @@
         <preference name="android-targetSdkVersion" value="24" />
         <preference name="SplashMaintainAspectRatio" value="false" />
         <preference name="SplashShowOnlyFirstTime" value="false" />
-        <!--    <splash src="res/screen/android/splash-land-hdpi.png" density="land-hdpi" />
-        <splash src="res/screen/android/splash-land-ldpi.png" density="land-ldpi" />
-        <splash src="res/screen/android/splash-land-mdpi.png" density="land-mdpi" />
-        <splash src="res/screen/android/splash-land-xhdpi.png" density="land-xhdpi" />
-        <splash src="res/screen/android/splash-port-hdpi.png" density="port-hdpi" />
-        <splash src="res/screen/android/splash-port-ldpi.png" density="port-ldpi" />
-        <splash src="res/screen/android/splash-port-mdpi.png" density="port-mdpi" />
-        <splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi" />-->
     </platform>
     <platform name="ios">
         <preference name="target-device" value="handset" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <!--    <preference name="BackupWebStorage" value="none" /> -->
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
         <preference name="FadeSplashScreen" value="true" />
         <preference name="FadeSplashScreenDuration" value="750" />
@@ -51,4 +42,6 @@
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
+    <plugin name="com.unarin.cordova.beacon" spec="https://github.com/petermetz/cordova-plugin-ibeacon.git" />
+    <plugin name="cordova-plugin-device" spec="~1.1.6" />
 </widget>

@@ -7,17 +7,23 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+        "com.unarin.cordova.beacon": {
+            "PACKAGE_NAME": "edu.ncku.designexpo"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+            "PACKAGE_NAME": "edu.ncku.designexpo"
         },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "edu.ncku.designexpo"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
+            "PACKAGE_NAME": "edu.ncku.designexpo"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "edu.ncku.designexpo"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "edu.ncku.designexpo"
         }
     },
     "dependent_plugins": {}

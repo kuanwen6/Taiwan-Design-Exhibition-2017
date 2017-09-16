@@ -25,6 +25,8 @@ $$(document).on('deviceready', function() {
   } else {
     console.log("App has launched " + ++localStorage.launchCount + " times.")
   };
+  
+  beacon_util.init_beacon_detection();
 
   mainView.hideNavbar(false);
 });
