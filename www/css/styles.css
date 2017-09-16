@@ -144,7 +144,7 @@ div[data-page='collection'] {
 .ai_speech2 {
     position: absolute;
     top: 20%;
-    left: 20%;
+    left: 18%;
     padding: 30px 27px 5px 27px;
     z-index: 4;
     background-image: url(../img/speech_bg/ai_speech_bg2.png);
