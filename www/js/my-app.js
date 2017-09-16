@@ -48,20 +48,20 @@ myApp.onPageInit('home', function(page) {
 
   var applaunchCount = window.localStorage.getItem('launchCount');
 
-  if (applaunchCount > 1) {
+  if (applaunchCount >= 1) {
     $$('.intro_bg').show();
     setTimeout(function() {
-      $$('.ai_speech').show();
+      $('.ai_speech').fadeIn(500);
     }, 700);
 
     $$(window).once('click', (event) => {
-      $$('.man_speech').show();
+      $('.man_speech').fadeIn(500);
       $$(window).once('click', (event) => {
         $$('.intro_bg').hide();
         $$('.ai_speech').hide();
         $$('.man_speech').hide();
         setTimeout(function() {
-          $$('.ai_speech2').show();
+          $('.ai_speech2').fadeIn(500);
         }, 500);
         $$(window).once('click', (event) => {
           $$('.ai_speech2').hide();
@@ -152,16 +152,22 @@ myApp.onPageInit('home', function(page) {
     if (!$(event.target).closest('.picker-modal').length && !$(event.target).closest('.items').length && $$('.picker-modal.modal-in').length > 0) {
       myApp.closeModal('.picker-modal.modal-in');
     }
-  });
+  });  
 
-  $$('#challengeImg').on('click', (e) => {
+  $$('#challengeImg').on('click', function (e) {
     const pHeight = $('#challengeImg').height();
     const pOffset = $('#challengeImg').offset();
     const y2 = e.pageY - pOffset.top;
 
+    const sitePosition = this.src.indexOf('site');
+    const siteNum = parseInt(this.src.charAt(sitePosition + 4));
+
     if (y2 > pHeight * 0.855) {
       mainView.router.load({
         url: 'challenge.html',
+        context: {
+          siteNum,
+        }
       });
     }
   });
@@ -208,6 +214,7 @@ myApp.onPageInit('information', function(page) {
 
 myApp.onPageInit('challenge', function(page) {
   mainView.showNavbar(false);
+  console.log(page);
 
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
@@ -228,13 +235,6 @@ myApp.onPageInit('challenge', function(page) {
     $$('.answer > svg').css('margin-top', 'calc((100vh - 36vh) / 12)');
   }
 
-  /*  home button
-  $$('.left').on('click' , () => {
-    $$('.navbar').css('background-image' ,'none');
-    $$('.navbar').css('background-size' ,'none');
-  });
-  */
-
   //  loading page
   setTimeout(() => {
     $$('#gameStart-modal').css('display', 'none');
@@ -245,25 +245,21 @@ myApp.onPageInit('challenge', function(page) {
   }, 3000);
 
   let number = 0;
+  const siteNum = page.context.siteNum;
 
-  const question = ['請問「主題館」的前身是成大的何種建築?', '請問「主題館」的設計概念下列何者為非?'];
-  const options = [
-    ['博物館', '圖書館', '資訊系館', '體育館'],
-    ['紡織技術', '循環經濟', '國際外交', '雲端智能']
-  ];
-  const answer = ['answer2', 'answer3'];
+  const questions = ftd[siteNum].questions;
   let result = ['pass', 'pass'];
 
-  $$('#questionTextArea').html(question[number]);
+  $$('#questionTextArea').html(questions[number].question);
   $$('#question-number').html(`Q${number+1}:`);
   for (let i = 0; i < 4; i += 1) {
-    $$(`#answer${i+1}`).html(options[number][i]);
+    $$(`#answer${i+1}`).html(questions[number].options[i]);
   }
 
   $$('.answer').on('click', function answerClicked() {
     $$('.loading').html(' ');
     $$('.answer').off('click', answerClicked); // lock the button
-    if (this.id === answer[number]) {
+    if (this.id === questions[number].answer) {
       $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/correct-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
@@ -316,10 +312,10 @@ myApp.onPageInit('challenge', function(page) {
         setTimeout(() => {
           number++;
 
-          $$('#questionTextArea').html(question[number]);
+          $$('#questionTextArea').html(questions[number].question);
           $$('#question-number').html(`Q${number+1}:`);
           for (let i = 0; i < 4; i += 1) {
-            $$(`#answer${i+1}`).html(options[number][i]);
+            $$(`#answer${i+1}`).html(questions[number].options[i]);
           }
           $$('.answer').on('click', answerClicked); // unlock the button
         }, 2500);

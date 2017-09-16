@@ -31,6 +31,12 @@
         <preference name="FadeSplashScreen" value="true" />
         <preference name="FadeSplashScreenDuration" value="750" />
     </platform>
+    <config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" mode="replace">
+        <false/>
+    </config-file>
+    <config-file platform="ios" parent="UIStatusBarHidden" mode="replace">
+        <true/>
+    </config-file>    
     <splash src="img/splash.png" />
     <preference name="orientation" value="portrait" />
     <preference name="Fullscreen" value="true" />
