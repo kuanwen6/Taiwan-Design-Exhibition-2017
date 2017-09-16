@@ -16,33 +16,49 @@ beacon_util.init_beacon_detection = function()
 	// Specify a shortcut for the location manager that
 	// has the iBeacon functions.
 	window.locationManager = cordova.plugins.locationManager;
+  //window.BluetoothStatus = cordova.plugins.BluetoothStatus;
 
-	locationManager.isBluetoothEnabled()
-  	.then(function(isEnabled) {
-    	console.log("isEnabled: " + isEnabled);
-    	if (!isEnabled) {
-    		if(device.platform == 'Android'){
-    			myApp.confirm('開啟藍牙就能獲得特殊收藏品哦！！是否開啟？', '啟用藍芽？',
-    				function () {
-    					locationManager.enableBluetooth();
-    				}
-    			);
-    	  }
-        else{
-        	myApp.alert('開啟藍牙就能獲得特殊收藏品哦！！', '啟用藍芽？');
+  //myApp.alert(device.platform);
+  cordova.plugins.BluetoothStatus.initPlugin();
+  //myApp.alert('j');
+  //if(BluetoothStatus.BTenabled)
+  if(device.platform == 'Android'){
+    locationManager.isBluetoothEnabled()
+      .then(function(isEnabled) {
+        console.log("isEnabled: " + isEnabled);
+        if (!isEnabled) {   
+          myApp.confirm('開啟藍牙就能獲得特殊收藏品哦！！是否開啟？', '啟用藍芽？',
+            function () {
+              locationManager.enableBluetooth();
+            }
+          );
         }
-      }
-    })
-    .fail()
-    .done();
+      })
+      .fail()
+      .done();
+  }else{
+    if(!cordova.plugins.BluetoothStatus.BTenabled){
+      myApp.alert('開啟藍牙就能獲得特殊收藏品哦！！', '啟用藍芽？');
+    }
+  }
+	
 
   //Retrieve Collection Record from local storage
+  
   for(var i = 0; i < ftd.length; i++)
   {
     var collection = 'Collection' + i.toString() + '2';
     beacon_util.collections[collection] = window.localStorage.getItem(collection);
   }
   beacon_util.setIBeaconCallback();
+
+  /**
+  * Starts Beacon Scan
+  * Use beacon_util.stopScanForBeacons() 
+  * when you want to disable detection in some pages
+  * i.e. challenge page
+  */
+  beacon_util.startScanForBeacons();
 }
 
 

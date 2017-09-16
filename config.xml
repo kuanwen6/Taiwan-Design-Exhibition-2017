@@ -31,12 +31,12 @@
         <preference name="FadeSplashScreen" value="true" />
         <preference name="FadeSplashScreenDuration" value="750" />
     </platform>
-    <config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" mode="replace">
-        <false/>
+    <config-file mode="replace" parent="UIViewControllerBasedStatusBarAppearance" platform="ios">
+        <false />
     </config-file>
-    <config-file platform="ios" parent="UIStatusBarHidden" mode="replace">
-        <true/>
-    </config-file>    
+    <config-file mode="replace" parent="UIStatusBarHidden" platform="ios">
+        <true />
+    </config-file>
     <splash src="img/splash.png" />
     <preference name="orientation" value="portrait" />
     <preference name="Fullscreen" value="true" />
@@ -50,4 +50,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
     <plugin name="com.unarin.cordova.beacon" spec="https://github.com/petermetz/cordova-plugin-ibeacon.git" />
     <plugin name="cordova-plugin-device" spec="~1.1.6" />
+    <plugin name="cordova-plugin-bluetooth-status" spec="~1.0.4" />
 </widget>
