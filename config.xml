@@ -45,7 +45,7 @@
     </config-file>
     <config-file platform="ios" parent="UIStatusBarHidden" mode="replace">
         <true/>
-    </config-file>    
+    </config-file>
     <splash src="img/splash.png" />
     <preference name="orientation" value="portrait" />
     <preference name="Fullscreen" value="true" />
