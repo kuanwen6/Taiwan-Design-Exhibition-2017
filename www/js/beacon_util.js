@@ -22,7 +22,7 @@ beacon_util.init_beacon_detection = function()
     	console.log("isEnabled: " + isEnabled);
     	if (!isEnabled) {
     		if(device.platform == 'Android'){
-    			myApp.confirm('開啟藍牙就能獲得特殊收藏品哦！！是否開啟？', '啟用藍芽？'
+    			myApp.confirm('開啟藍牙就能獲得特殊收藏品哦！！是否開啟？', '啟用藍芽？',
     				function () {
     					locationManager.enableBluetooth();
     				}
