@@ -38,7 +38,11 @@ beacon_util.init_beacon_detection = function()
       .done();
   }else{
     if(!cordova.plugins.BluetoothStatus.BTenabled){
-      myApp.alert('開啟藍牙就能獲得特殊收藏品哦！！', '啟用藍芽？');
+      //myApp.alert('開啟藍牙就能獲得特殊收藏品哦！！', '啟用藍芽？');
+      myApp.addNotification({
+                title: '啟用藍芽？',
+                message: '開啟藍牙就能獲得特殊收藏品哦！！',
+      });
     }
   }
 	
