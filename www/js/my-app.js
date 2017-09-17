@@ -235,12 +235,15 @@ myApp.onPageInit('information', function(page) {
   $$('.navbar').css('background-image', "url('img/device-background/information-background.png')");
   $$('.navbar').css('background-size', 'cover');
 
-  $('html').attr('style', "padding-top: 20px !important");
+  $$('.navbar').css('height', '64px');
+  $$('.navbar-inner').css('padding-top', '20px');
+
 
   $$('.left').on('click', () => {
     $$('.navbar').css('background-image', 'none');
     $$('.navbar').css('background-size', 'none');
-    $('html').attr('style', "padding-top: 0px !important");
+    $$('.navbar').css('height', '44px');
+    $$('.navbar-inner').css('padding-top', '0px');
   });
 
 
