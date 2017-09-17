@@ -19,14 +19,14 @@ beacon_util.init_beacon_detection = function()
   //window.BluetoothStatus = cordova.plugins.BluetoothStatus;
 
   //myApp.alert(device.platform);
-  cordova.plugins.BluetoothStatus.initPlugin();
+  //cordova.plugins.BluetoothStatus.initPlugin();
   //myApp.alert('j');
   //if(BluetoothStatus.BTenabled)
   if(device.platform == 'Android'){
     locationManager.isBluetoothEnabled()
       .then(function(isEnabled) {
         console.log("isEnabled: " + isEnabled);
-        if (!isEnabled) {   
+        if (!isEnabled) {
           myApp.confirm('開啟藍牙就能獲得特殊收藏品哦！！是否開啟？', '啟用藍芽？',
             function () {
               locationManager.enableBluetooth();
@@ -37,14 +37,19 @@ beacon_util.init_beacon_detection = function()
       .fail()
       .done();
   }else{
-    if(!cordova.plugins.BluetoothStatus.BTenabled){
+    myApp.addNotification({
+      title: '小提示',
+      message: '開啟藍牙就能獲得特殊收藏品哦！！',
+    });
+  }
+ /*   if(!cordova.plugins.BluetoothStatus.BTenabled){
       //myApp.alert('開啟藍牙就能獲得特殊收藏品哦！！', '啟用藍芽？');
       myApp.addNotification({
                 title: '啟用藍芽？',
                 message: '開啟藍牙就能獲得特殊收藏品哦！！',
       });
     }
-  }
+  }*/
 	
 
   //Retrieve Collection Record from local storage
@@ -63,6 +68,7 @@ beacon_util.init_beacon_detection = function()
   * i.e. challenge page
   */
   beacon_util.startScanForBeacons();
+
 }
 
 

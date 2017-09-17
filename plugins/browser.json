@@ -25,9 +25,6 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "edu.ncku.designexpo"
         },
-        "cordova-plugin-bluetooth-status": {
-	    "PACKAGE_NAME": "edu.ncku.designexpo"
-        },
         "cordova-custom-config": {
             "PACKAGE_NAME": "edu.ncku.designexpo"
         }

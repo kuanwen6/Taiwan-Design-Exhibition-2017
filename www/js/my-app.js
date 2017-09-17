@@ -10,9 +10,6 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: true
 });
 
-var applaunchCount = window.localStorage.getItem('launchCount');
-
-
 $$(document).on('backbutton', function() {
   var view = myApp.getCurrentView();
   view.router.back();
@@ -20,28 +17,20 @@ $$(document).on('backbutton', function() {
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
-
-  if (!applaunchCount) {
-    window.localStorage.setItem('launchCount', 1);
-    applaunchCount = 1;
-  } else {
-    applaunchCount = ++localStorage.launchCount;
-    console.log("App has launched " + applaunchCount + " times.");
-  };
-
   // Setup beacon detection
   beacon_util.init_beacon_detection();
 });
 
 myApp.onPageBeforeInit('home', function(page) {
-  if (applaunchCount >= 1) {
-    //  $$('.intro_bg').hide();
+  var applaunched = window.localStorage.getItem('launched');
+  if (applaunched) {
+    $$('.intro_bg').hide();
   }
 });
 
 myApp.onPageInit('home', function(page) {
   mainView.hideNavbar(false);
-
+  
   let i = 0;
   for (const planet of planets) {
     var $$img = $$('<img class="planet" src="./img/pavilion_logo/' + planet.name + '.png">');
@@ -52,7 +41,9 @@ myApp.onPageInit('home', function(page) {
     $$('.home').append($$a);
   }
 
-  if (applaunchCount >= 1) {
+  var applaunched = window.localStorage.getItem('launched');
+  if (!applaunched) {
+    applaunched = window.localStorage.setItem('launched', true);
     setTimeout(function() {
       $('.ai_speech').fadeIn(500);
     }, 700);
