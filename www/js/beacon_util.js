@@ -35,6 +35,8 @@ beacon_util.init_beacon_detection = function()
     myApp.addNotification({
       title: '小提示',
       message: '開啟藍牙就能獲得特殊收藏品哦！！',
+      hold: 2000,
+      closeOnClick: true,
     });
   }
 
