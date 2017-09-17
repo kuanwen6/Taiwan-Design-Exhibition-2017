@@ -75,17 +75,6 @@ myApp.onPageInit('home', function(page) {
     });
   }
 
-  $$('#collection').once('click', function() {
-    for (var i = 0; i < 8; i++) {
-      for (var j = 1; j < 3; j++) {
-        var $$div = $$('<div id="collection' + i + j +'"></div>');
-        $$('.collections').append($$div);
-        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '-black.png">');
-      }
-    }
-
-  })
-
   $$('.planet_button').on('click', function() {
     $$('#siteImg').attr('src', `img/ftd/${this.id}.png`);
     $$('#site-modal').css('display', 'block');
@@ -227,10 +216,21 @@ myApp.onPageInit('home', function(page) {
 myApp.onPageInit('collection', function(page) {
   mainView.hideNavbar(false);
 
-  for (var i = 0; i < 8; i++) {
-    for (var j = 1; j < 3; j++) {
-      if (window.localStorage.getItem('Collection' + i + j)) {
-        $$('#collection'+i+j).html('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
+  if (!localStorage.collectionLaunched) {
+    window.localStorage.setItem('collectionLaunched', true);
+    for (var i = 0; i < 8; i++) {
+      for (var j = 1; j < 3; j++) {
+        var $$div = $$('<div id="collection' + i + j + '"></div>');
+        $$('.collections').append($$div);
+        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '-black.png">');
+      }
+    }
+  } else {
+    for (var i = 0; i < 8; i++) {
+      for (var j = 1; j < 3; j++) {
+        if (window.localStorage.getItem('Collection' + i + j)) {
+          $$('#collection' + i + j).html('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
+        }
       }
     }
   }
@@ -239,7 +239,6 @@ myApp.onPageInit('collection', function(page) {
     mainView.hideNavbar(false);
   });
 });
-
 
 
 myApp.onPageInit('information', function(page) {
