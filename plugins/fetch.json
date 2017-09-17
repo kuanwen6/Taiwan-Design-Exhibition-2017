@@ -51,7 +51,7 @@
     "cordova-custom-config": {
         "source": {
             "type": "registry",
-            "id": "cordova-custom-config"
+            "id": "cordova-custom-config@~4.0.2"
         },
         "is_top_level": true,
         "variables": {}

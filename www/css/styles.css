@@ -115,7 +115,7 @@ div[data-page='collection'] {
   position: absolute;
   top: 10%;
   left: 10%;
-  padding: 6px 23px 30px 23px;
+  padding: 6px 5px 30px 20px;
   z-index: 4;
   background-image: url(../img/speech_bg/ai_speech_bg.png);
   background-size: 100% 100%;
@@ -129,7 +129,7 @@ div[data-page='collection'] {
   position: absolute;
   top: 45%;
   left: 40%;
-  padding: 6px 23px 30px 23px;
+  padding: 6px 18px 30px 18px;
   z-index: 4;
   background-image: url(../img/speech_bg/man_speech_bg.png);
   background-size: 100% 100%;
@@ -142,13 +142,13 @@ div[data-page='collection'] {
 .ai_speech2 {
   position: absolute;
   top: 20%;
-  left: 18%;
-  padding: 30px 27px 5px 27px;
+  left: 20%;
+  padding: 30px 22px 5px 22px;
   z-index: 4;
   background-image: url(../img/speech_bg/ai_speech_bg2.png);
   background-size: 100% 100%;
-  font-size: 16px;
-  letter-spacing: 1.1px;
+  font-size: 4.1vmin;
+  letter-spacing: 1px;
   color: white;
   display: none;
 }

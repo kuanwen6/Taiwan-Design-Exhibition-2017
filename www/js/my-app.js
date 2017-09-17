@@ -23,8 +23,13 @@ $$(document).on('deviceready', function() {
 
 myApp.onPageBeforeInit('home', function(page) {
   var applaunched = window.localStorage.getItem('launched');
+
   if (applaunched) {
     $$('.intro_bg').hide();
+  } else {
+    for (let i = 0; i < 8; i++) {
+      applaunched = window.localStorage.setItem(`site${i}Answered`, 0);
+    }
   }
 });
 
@@ -42,6 +47,7 @@ myApp.onPageInit('home', function(page) {
   }
 
   var applaunched = window.localStorage.getItem('launched');
+
   if (!applaunched) {
     applaunched = window.localStorage.setItem('launched', true);
     setTimeout(function() {
@@ -63,19 +69,29 @@ myApp.onPageInit('home', function(page) {
         });
       });
     });
-  }else{
+  } else {
     $$(window).once('click', (event) => {
-          beacon_util.startScanForBeacons();
+      beacon_util.startScanForBeacons();
     });
   }
 
   $$('.planet_button').on('click', function() {
     $$('#siteImg').attr('src', `img/ftd/${this.id}.png`);
     $$('#site-modal').css('display', 'block');
-
     $$('#challengeImg').attr('src', `img/challenge-board/${this.id}-challenge.png`);
-    $$('#item0').attr('src', `img/collections/${this.id}-item0.png`);
-    $$('#item1').attr('src', `img/collections/${this.id}-item1.png`);
+
+    const siteNum = parseInt(this.id.charAt(4));
+    if (window.localStorage.getItem(`Collection${siteNum}1`)) {
+      $$('#item0').attr('src', `img/collections/${this.id}-item0.png`);
+    } else {
+      $$('#item0').attr('src', `img/collections/${this.id}-item0-black.png`);
+    }
+
+    if (window.localStorage.getItem(`Collection${siteNum}2`)) {
+      $$('#item1').attr('src', `img/collections/${this.id}-item1.png`);
+    } else {
+      $$('#item1').attr('src', `img/collections/${this.id}-item1-black.png`);
+    }
   });
 
   $$('#close-btn').on('click', () => {
@@ -123,26 +139,51 @@ myApp.onPageInit('home', function(page) {
       myApp.closeModal('.picker-modal.modal-in');
     } else {
       if (itemNum == 0) {
-        myApp.pickerModal(
-          `<div class="picker-modal" style="height: auto;">
+        if (window.localStorage.getItem(`Collection${siteNum}1`)) {
+          myApp.pickerModal(
+            `<div class="picker-modal" style="height: auto;">
+              <div class="picker-modal-inner">
+                <div class="content-block" style="margin: 15px 0;">
+                  <h2>${ftd[siteNum].items[itemNum].title}</h2>
+                  <p>需要答對此關卡共2題答案</p>
+                  <p><span style="color: red;">${window.localStorage.getItem(`site${siteNum}Answered`)}</span> / 2題</p>
+                </div>
+              </div>
+            </div>`)
+        } else {
+          myApp.pickerModal(
+            `<div class="picker-modal" style="height: auto;">
+              <div class="picker-modal-inner">
+                <div class="content-block" style="margin: 15px 0;">
+                  <h2>蒐集品A</h2>
+                  <p>需要答對此關卡共2題答案</p>
+                  <p><span style="color: red;">${window.localStorage.getItem(`site${siteNum}Answered`)}</span> / 2題</p>
+                </div>
+              </div>
+            </div>`)
+        }
+      } else {
+        if (window.localStorage.getItem(`Collection${siteNum}2`)) {
+          myApp.pickerModal(
+            `<div class="picker-modal" style="height: auto;">
             <div class="picker-modal-inner">
               <div class="content-block" style="margin: 15px 0;">
                 <h2>${ftd[siteNum].items[itemNum].title}</h2>
-                <p>需要答對此關卡共2題答案</p>
-                <p><span style="color: red;">0</span> / 2題</p>
+                <p><span style="color: red;">開啟藍芽並到此展場附近便可以獲得</p>
               </div>
             </div>
           </div>`)
-      } else {
-        myApp.pickerModal(
-          `<div class="picker-modal" style="height: auto;">
-           <div class="picker-modal-inner">
-             <div class="content-block" style="margin: 15px 0;">
-               <h2>${ftd[siteNum].items[itemNum].title}</h2>
-               <p><span style="color: red;">開啟藍芽並到此展場附近便可以獲得</p>
-             </div>
-           </div>
-         </div>`)
+        } else {
+          myApp.pickerModal(
+            `<div class="picker-modal" style="height: auto;">
+            <div class="picker-modal-inner">
+              <div class="content-block" style="margin: 15px 0;">
+                <h2>蒐集品B</h2>
+                <p><span style="color: red;">開啟藍芽並到此展場附近便可以獲得</p>
+              </div>
+            </div>
+          </div>`)
+        }
       }
     }
   });
@@ -174,11 +215,17 @@ myApp.onPageInit('home', function(page) {
 
 myApp.onPageInit('collection', function(page) {
   mainView.hideNavbar(false);
-  for (const planet of planets) {
-    for (var i = 1; i < 3; i++) {
+
+  $('.collections').empty();
+  for (var i = 0; i < 8; i++) {
+    for (var j = 1; j < 3; j++) {
       var $$div = $$('<div></div>');
       $$('.collections').append($$div);
-      $$div.append('<img src="./img/collection/' + planet.name + '_' + i + '.png">');
+      if (window.localStorage.getItem('Collection' + i + j)) {
+        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
+      } else {
+        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '-black.png">');
+      }
     }
   }
 
@@ -188,15 +235,17 @@ myApp.onPageInit('collection', function(page) {
 });
 
 
-
 myApp.onPageInit('information', function(page) {
   mainView.showNavbar(false);
   $$('.navbar').css('background-image', "url('img/device-background/information-background.png')");
   $$('.navbar').css('background-size', 'cover');
 
+  $('html').attr('style', "padding-top: 20px !important");
+
   $$('.left').on('click', () => {
     $$('.navbar').css('background-image', 'none');
     $$('.navbar').css('background-size', 'none');
+    $('html').attr('style', "padding-top: 0px !important");
   });
 
 
@@ -260,6 +309,11 @@ myApp.onPageInit('challenge', function(page) {
         <polyline class="path check" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
       </svg>`);
       result[number] = 'PASS';
+      const correctNum = parseInt(window.localStorage.getItem(`site${siteNum}Answered`)) + 1;
+      window.localStorage.setItem(`site${siteNum}Answered`, correctNum);
+      if (correctNum >= 2) {
+        window.localStorage.setItem(`Collection${siteNum}1`, true);
+      }
     } else {
       $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/wrong-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
