@@ -30,7 +30,7 @@ myApp.onPageBeforeInit('home', function(page) {
 
 myApp.onPageInit('home', function(page) {
   mainView.hideNavbar(false);
-  
+
   let i = 0;
   for (const planet of planets) {
     var $$img = $$('<img class="planet" src="./img/pavilion_logo/' + planet.name + '.png">');
@@ -59,8 +59,13 @@ myApp.onPageInit('home', function(page) {
         }, 500);
         $$(window).once('click', (event) => {
           $$('.ai_speech2').hide();
+          beacon_util.startScanForBeacons();
         });
       });
+    });
+  }else{
+    $$(window).once('click', (event) => {
+          beacon_util.startScanForBeacons();
     });
   }
 
