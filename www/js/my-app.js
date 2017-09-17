@@ -27,7 +27,7 @@ myApp.onPageBeforeInit('home', function(page) {
   if (applaunched) {
     $$('.intro_bg').hide();
   } else {
-    for (let i = 0; i < 8; i++){
+    for (let i = 0; i < 8; i++) {
       applaunched = window.localStorage.setItem(`site${i}Answered`, 0);
     }
   }
@@ -69,9 +69,9 @@ myApp.onPageInit('home', function(page) {
         });
       });
     });
-  }else{
+  } else {
     $$(window).once('click', (event) => {
-          beacon_util.startScanForBeacons();
+      beacon_util.startScanForBeacons();
     });
   }
 
@@ -215,11 +215,16 @@ myApp.onPageInit('home', function(page) {
 
 myApp.onPageInit('collection', function(page) {
   mainView.hideNavbar(false);
-  for (const planet of planets) {
-    for (var i = 1; i < 3; i++) {
+
+  for (var i = 0; i < 8; i++) {
+    for (var j = 1; j < 3; j++) {
       var $$div = $$('<div></div>');
       $$('.collections').append($$div);
-      $$div.append('<img src="./img/collection/' + planet.name + '_' + i + '.png">');
+      if (window.localStorage.getItem('Collection' + i + j)) {
+        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
+      } else {
+        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '-black.png">');
+      }
     }
   }
 
