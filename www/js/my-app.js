@@ -19,11 +19,11 @@ $$(document).on('deviceready', function() {
   console.log("Device is ready!");
   // Setup beacon detection
   beacon_util.init_beacon_detection();
+
 });
 
 myApp.onPageBeforeInit('home', function(page) {
   var applaunched = window.localStorage.getItem('launched');
-
   if (applaunched) {
     $$('.intro_bg').hide();
   } else {
@@ -211,6 +211,20 @@ myApp.onPageInit('home', function(page) {
       });
     }
   });
+
+  if(page.context.getItem) {
+    console.log('aaa');
+    setTimeout(() => {
+    myApp.addNotification({
+                    title: '台灣設計展',
+                    subtitle: '已完成「'+ planets[page.context.station].name_zh + '」之蒐集條件',
+                    message: '您已獲得' + planets[page.context.station].name_zh + '的收藏品:  '+ ftd[page.context.station].items[0].title,
+                    media: '<img src="./img/collections/' + 'site' + page.context.station + '-item0.png">',
+                    hold: 8000,
+                    closeOnClick: true,
+                });
+    }, 500);
+  }
 });
 
 myApp.onPageInit('collection', function(page) {
@@ -295,6 +309,7 @@ myApp.onPageInit('challenge', function(page) {
 
   const questions = ftd[siteNum].questions;
   let result = ['pass', 'pass'];
+  let getItem = false;
 
   $$('#questionTextArea').html(questions[number].question);
   $$('#question-number').html(`Q${number+1}:`);
@@ -314,8 +329,9 @@ myApp.onPageInit('challenge', function(page) {
       result[number] = 'PASS';
       const correctNum = parseInt(window.localStorage.getItem(`site${siteNum}Answered`)) + 1;
       window.localStorage.setItem(`site${siteNum}Answered`, correctNum);
-      if (correctNum >= 2) {
+      if (correctNum == 2) {
         window.localStorage.setItem(`Collection${siteNum}1`, true);
+        getItem = true;
       }
     } else {
       $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/wrong-btn.png") !important');
@@ -345,6 +361,10 @@ myApp.onPageInit('challenge', function(page) {
         $$('#ok-btn').on('click', () => {
           mainView.router.load({
             url: 'home.html',
+            context: {
+              getItem,
+              station: siteNum,
+            }
           });
         });
       } else {
