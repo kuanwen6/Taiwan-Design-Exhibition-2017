@@ -35,7 +35,7 @@ beacon_util.init_beacon_detection = function()
     myApp.addNotification({
       title: '小提示',
       message: '開啟藍牙就能獲得特殊收藏品哦！！',
-      hold: 2000,
+      hold: 6000,
       closeOnClick: true,
     });
   }
@@ -190,7 +190,7 @@ beacon_util.didRangeBeaconsInRegion = function(pluginResult)
                 subtitle: '獲得收藏品',
                 message: '你已獲得' + planets[station].name_zh + '的收藏品:\n'+ ftd[station].items[1].title,
                 media: '<img src="./img/collections/' + 'site' + station + '-item1.png">',
-                hold: 2000,
+                hold: 6000,
                 closeOnClick: true,
             });
 
