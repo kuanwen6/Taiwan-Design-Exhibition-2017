@@ -186,8 +186,12 @@ beacon_util.didRangeBeaconsInRegion = function(pluginResult)
           {
             // Get the collection of the station 
             myApp.addNotification({
-                title: '獲得收藏品',
-                message: '你已獲得' + station + '的收藏品: '+ ftd[station].items[1].title,
+                title: '台灣設計展',
+                subtitle: '獲得收藏品',
+                message: '你已獲得' + planets[station].name_zh + '的收藏品:\n'+ ftd[station].items[1].title,
+                media: '<img src="./img/collections/' + 'site' + station + '-item1.png">',
+                hold: 2000,
+                closeOnClick: true,
             });
 
             beacon_util.collections[collection] = true;

@@ -565,3 +565,7 @@ div[data-page='collection'] {
   padding-left: 10px;
   font-size: 16px;
 }
+
+.item-title {
+  padding-left: 4px;
+}
