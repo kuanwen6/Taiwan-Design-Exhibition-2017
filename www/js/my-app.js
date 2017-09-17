@@ -10,9 +10,6 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: true
 });
 
-var applaunchCount = window.localStorage.getItem('launchCount');
-
-
 $$(document).on('backbutton', function() {
   var view = myApp.getCurrentView();
   view.router.back();
@@ -20,21 +17,14 @@ $$(document).on('backbutton', function() {
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
-
-  if (!applaunchCount) {
-    window.localStorage.setItem('launchCount', 1);
-    applaunchCount = 1;
-  } else {
-    applaunchCount = ++localStorage.launchCount;
-    console.log("App has launched " + applaunchCount + " times.");
-  };
-
+  // Setup beacon detection
+  beacon_util.init_beacon_detection();
 });
 
-
 myApp.onPageBeforeInit('home', function(page) {
-  if (applaunchCount >= 1) {
-    //  $$('.intro_bg').hide();
+  var applaunched = window.localStorage.getItem('launched');
+  if (applaunched) {
+    $$('.intro_bg').hide();
   }
 });
 
@@ -51,7 +41,9 @@ myApp.onPageInit('home', function(page) {
     $$('.home').append($$a);
   }
 
-  if (applaunchCount >= 1) {
+  var applaunched = window.localStorage.getItem('launched');
+  if (!applaunched) {
+    applaunched = window.localStorage.setItem('launched', true);
     setTimeout(function() {
       $('.ai_speech').fadeIn(500);
     }, 700);
@@ -67,8 +59,13 @@ myApp.onPageInit('home', function(page) {
         }, 500);
         $$(window).once('click', (event) => {
           $$('.ai_speech2').hide();
+          beacon_util.startScanForBeacons();
         });
       });
+    });
+  }else{
+    $$(window).once('click', (event) => {
+          beacon_util.startScanForBeacons();
     });
   }
 
