@@ -23,6 +23,8 @@
         <preference name="SplashMaintainAspectRatio" value="false" />
         <preference name="SplashShowOnlyFirstTime" value="false" />
         <preference name="Fullscreen" value="true" />
+        <icon src="logo.png" />
+        <splash src="img/splash.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -30,9 +32,11 @@
         <preference name="target-device" value="handset" />
         <preference name="FadeSplashScreen" value="true" />
         <preference name="FadeSplashScreenDuration" value="750" />
+        <icon src="logo.png" width="180" height="180" />
+        <splash src="img/splash.png" width="320" height="480"/>
     </platform>
-    <splash src="img/splash.png" />
-    <icon src="logo.png" />
+    
+    
     <preference name="orientation" value="portrait" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="DisallowOverscroll" value="true" />
