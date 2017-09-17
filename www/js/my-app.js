@@ -216,21 +216,15 @@ myApp.onPageInit('home', function(page) {
 myApp.onPageInit('collection', function(page) {
   mainView.hideNavbar(false);
 
-  if (!localStorage.collectionLaunched) {
-    window.localStorage.setItem('collectionLaunched', true);
-    for (var i = 0; i < 8; i++) {
-      for (var j = 1; j < 3; j++) {
-        var $$div = $$('<div id="collection' + i + j + '"></div>');
-        $$('.collections').append($$div);
+  $('.collections').empty();
+  for (var i = 0; i < 8; i++) {
+    for (var j = 1; j < 3; j++) {
+      var $$div = $$('<div></div>');
+      $$('.collections').append($$div);
+      if (window.localStorage.getItem('Collection' + i + j)) {
+        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
+      } else {
         $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '-black.png">');
-      }
-    }
-  } else {
-    for (var i = 0; i < 8; i++) {
-      for (var j = 1; j < 3; j++) {
-        if (window.localStorage.getItem('Collection' + i + j)) {
-          $$('#collection' + i + j).html('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
-        }
       }
     }
   }
