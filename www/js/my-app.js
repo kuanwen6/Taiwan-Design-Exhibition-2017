@@ -75,6 +75,17 @@ myApp.onPageInit('home', function(page) {
     });
   }
 
+  $$('#collection').once('click', function() {
+    for (var i = 0; i < 8; i++) {
+      for (var j = 1; j < 3; j++) {
+        var $$div = $$('<div id="collection' + i + j +'"></div>');
+        $$('.collections').append($$div);
+        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '-black.png">');
+      }
+    }
+
+  })
+
   $$('.planet_button').on('click', function() {
     $$('#siteImg').attr('src', `img/ftd/${this.id}.png`);
     $$('#site-modal').css('display', 'block');
@@ -218,12 +229,8 @@ myApp.onPageInit('collection', function(page) {
 
   for (var i = 0; i < 8; i++) {
     for (var j = 1; j < 3; j++) {
-      var $$div = $$('<div></div>');
-      $$('.collections').append($$div);
       if (window.localStorage.getItem('Collection' + i + j)) {
-        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
-      } else {
-        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '-black.png">');
+        $$('#collection'+i+j).html('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
       }
     }
   }
