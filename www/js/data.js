@@ -504,6 +504,7 @@ const ftd = [{
 
 const planets = [{
     name: 'theme',
+    name_zh: '主題館',
     img: {
       top: '35%',
       left: '20%',
@@ -519,6 +520,7 @@ const planets = [{
   },
   {
     name: 'southern_breeze',
+    name_zh: '南風館',
     img: {
       top: '10%',
       left: '2%',
@@ -534,6 +536,7 @@ const planets = [{
   },
   {
     name: 'craft',
+    name_zh: '工藝館',
     img: {
       top: '70%',
       left: '10%',
@@ -549,6 +552,7 @@ const planets = [{
   },
   {
     name: 'emerging_designers',
+    name_zh: '新銳館',
     img: {
       top: '65%',
       left: '80%',
@@ -564,6 +568,7 @@ const planets = [{
   },
   {
     name: 'international',
+    name_zh: '國際館',
     img: {
       top: '50%',
       left: '145%',
@@ -579,6 +584,7 @@ const planets = [{
   },
   {
     name: 'folk_arts_parade',
+    name_zh: '藝陣館',
     img: {
       top: '80%',
       left: '140%',
@@ -594,6 +600,7 @@ const planets = [{
   },
   {
     name: 'living',
+    name_zh: '生活館',
     img: {
       top: '5%',
       left: '155%',
@@ -609,6 +616,7 @@ const planets = [{
   },
   {
     name: 'experience',
+    name_zh: '體驗館',
     img: {
       top: '15%',
       left: '90%',
