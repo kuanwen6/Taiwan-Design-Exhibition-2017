@@ -31,7 +31,6 @@
         <preference name="FadeSplashScreen" value="true" />
         <preference name="FadeSplashScreenDuration" value="750" />
     </platform>
-
     <splash src="img/splash.png" />
     <icon src="logo.png" />
     <preference name="orientation" value="portrait" />
@@ -39,11 +38,9 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="ShowSplashScreenSpinner" value="true" />
-    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
     <plugin name="com.unarin.cordova.beacon" spec="https://github.com/petermetz/cordova-plugin-ibeacon.git" />
     <plugin name="cordova-plugin-device" spec="~1.1.6" />
-    <plugin name="cordova-custom-config" spec="~4.0.2" />
 </widget>
