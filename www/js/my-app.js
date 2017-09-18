@@ -15,11 +15,33 @@ $$(document).on('backbutton', function() {
   view.router.back();
 });
 
+
+const bgm;
+
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
   // Setup beacon detection
   beacon_util.init_beacon_detection();
 
+  const path;
+  if(device.platform == 'Android') {
+    path = "/android_asset/www/music/bgm.mp3";
+  } else {
+    path ="../music/bgm.mp3";
+  }
+
+  bgm = new Media(path, function () {
+    console.log('success');
+  }, function (err) {
+    console.log(err);
+  }, function (code) {
+      if (code == Media.MEDIA_STOPPED) {
+        bgm.play();
+      }
+  });
+  
+
+  bgm.play();
 });
 
 myApp.onPageBeforeInit('home', function(page) {
@@ -35,18 +57,6 @@ myApp.onPageBeforeInit('home', function(page) {
 
 myApp.onPageInit('home', function(page) {
   mainView.hideNavbar(false);
-
-  var my_media = new Media("/android_asset/www/js/bgm.mp3", function () {
-    console.log('success');
-  }, function (err) {
-    console.log(err);
-  }, function (code) {
-      if (code == Media.MEDIA_STOPPED) {
-        my_media.play();
-      }
-  });
-
-  my_media.play();
 
   let i = 0;
   for (const planet of planets) {
@@ -288,6 +298,26 @@ myApp.onPageInit('challenge', function(page) {
   mainView.showNavbar(false);
   console.log(page);
 
+  const path;
+  if(device.platform == 'Android') {
+    path = "/android_asset/www/music/challenge-bgm.mp3";
+  } else {
+    path ="../music/challenge-bgm.mp3";
+  }
+
+  bgm.release();
+  bgm = new Media(path, function () {
+    console.log('success');
+  }, function (err) {
+    console.log(err);
+  }, function (code) {
+      if (code == Media.MEDIA_STOPPED) {
+        bgm.play();
+      }
+  });
+  
+  bgm.play();
+
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
   $$('.navbar').css('background-size', 'none');
@@ -378,6 +408,25 @@ myApp.onPageInit('challenge', function(page) {
               station: siteNum,
             }
           });
+
+          if(device.platform == 'Android') {
+            path = "/android_asset/www/music/bgm.mp3";
+          } else {
+            path ="../music/bgm.mp3";
+          }
+        
+          bgm.release();
+          bgm = new Media(path, function () {
+            console.log('success');
+          }, function (err) {
+            console.log(err);
+          }, function (code) {
+              if (code == Media.MEDIA_STOPPED) {
+                bgm.play();
+              }
+          });
+          
+          bgm.play();
         });
       } else {
         $$('#start-text').css('animation', 'head-half 1.5s 1s');
