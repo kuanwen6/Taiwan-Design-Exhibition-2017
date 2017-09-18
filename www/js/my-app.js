@@ -17,6 +17,7 @@ $$(document).on('backbutton', function() {
 
 
 let bgm;
+let challengeBgm;
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
@@ -305,19 +306,19 @@ myApp.onPageInit('challenge', function(page) {
     path ="../music/challenge-bgm.mp3";
   }
 
-  bgm.stop();
-  bgm.release();
-  bgm = new Media(path, function () {
+  bgm.pasue();
+  
+  challengeBgm = new Media(path, function () {
     console.log('success');
   }, function (err) {
     console.log(err);
   }, function (code) {
       if (code == Media.MEDIA_STOPPED) {
-        bgm.play();
+        challengeBgm.play();
       }
   });
   
-  bgm.play();
+  challengeBgm.play();
 
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
@@ -416,8 +417,7 @@ myApp.onPageInit('challenge', function(page) {
             path ="../music/bgm.mp3";
           }
         
-          bgm.stop();
-          bgm.release();
+          challengeBgm.pause();
           bgm = new Media(path, function () {
             console.log('success');
           }, function (err) {
