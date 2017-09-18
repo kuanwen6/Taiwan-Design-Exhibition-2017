@@ -305,6 +305,7 @@ myApp.onPageInit('challenge', function(page) {
     path ="../music/challenge-bgm.mp3";
   }
 
+  bgm.stop();
   bgm.release();
   bgm = new Media(path, function () {
     console.log('success');
@@ -415,6 +416,7 @@ myApp.onPageInit('challenge', function(page) {
             path ="../music/bgm.mp3";
           }
         
+          bgm.stop();
           bgm.release();
           bgm = new Media(path, function () {
             console.log('success');
