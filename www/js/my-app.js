@@ -17,7 +17,6 @@ $$(document).on('backbutton', function() {
 
 
 let bgm;
-let challengeBgm;
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
@@ -299,27 +298,6 @@ myApp.onPageInit('challenge', function(page) {
   mainView.showNavbar(false);
   console.log(page);
 
-  let path;
-  if(device.platform == 'Android') {
-    path = "/android_asset/www/music/challenge-bgm.mp3";
-  } else {
-    path ="../music/challenge-bgm.mp3";
-  }
-
-  bgm.pasue();
-  
-  challengeBgm = new Media(path, function () {
-    console.log('success');
-  }, function (err) {
-    console.log(err);
-  }, function (code) {
-      if (code == Media.MEDIA_STOPPED) {
-        challengeBgm.play();
-      }
-  });
-  
-  challengeBgm.play();
-
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
   $$('.navbar').css('background-size', 'none');
@@ -410,25 +388,6 @@ myApp.onPageInit('challenge', function(page) {
               station: siteNum,
             }
           });
-
-          if(device.platform == 'Android') {
-            path = "/android_asset/www/music/bgm.mp3";
-          } else {
-            path ="../music/bgm.mp3";
-          }
-        
-          challengeBgm.pause();
-          bgm = new Media(path, function () {
-            console.log('success');
-          }, function (err) {
-            console.log(err);
-          }, function (code) {
-              if (code == Media.MEDIA_STOPPED) {
-                bgm.play();
-              }
-          });
-          
-          bgm.play();
         });
       } else {
         $$('#start-text').css('animation', 'head-half 1.5s 1s');
