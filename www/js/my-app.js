@@ -40,6 +40,10 @@ myApp.onPageInit('home', function(page) {
     console.log('success');
   }, function (err) {
     console.log(err);
+  }, function (code) {
+      if (code == Media.MEDIA_STOPPED) {
+        my_media.play();
+      }
   });
 
   my_media.play();
