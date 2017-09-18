@@ -25,9 +25,9 @@ $$(document).on('deviceready', function() {
 
   let path;
   if(device.platform == 'Android') {
-    path = "/android_asset/www/music/bgm.mp3";
+    path = "/android_asset/www/audio/bgm.mp3";
   } else {
-    path ="../music/bgm.mp3";
+    path ="audio/bgm.mp3";
   }
 
   bgm = new Media(path, function () {
@@ -411,8 +411,8 @@ myApp.onPageInit('challenge', function(page) {
             $$(`#answer${i+1}`).html(questions[number].options[i]);
           }
           $$('.answer').on('click', answerClicked); // unlock the button
-        }, 2500);
+        }, 2000);
       }
-    }, 2500);
+    }, 2000);
   });
 });
