@@ -23,7 +23,7 @@ $$(document).on('deviceready', function() {
   // Setup beacon detection
   beacon_util.init_beacon_detection();
 
-  const path;
+  let path;
   if(device.platform == 'Android') {
     path = "/android_asset/www/music/bgm.mp3";
   } else {
@@ -298,7 +298,7 @@ myApp.onPageInit('challenge', function(page) {
   mainView.showNavbar(false);
   console.log(page);
 
-  const path;
+  let path;
   if(device.platform == 'Android') {
     path = "/android_asset/www/music/challenge-bgm.mp3";
   } else {
