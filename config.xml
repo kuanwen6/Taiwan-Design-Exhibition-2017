@@ -53,8 +53,4 @@
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
   <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
   <plugin name="cordova-plugin-media" spec="~3.0.1" />
-  <config-file platform="android" parent="/manifest" mode="delete">
-    <uses-permission platform="android" name="android.permission.READ_PHONE_STATE" />
-    <uses-permission platform="android" name="android.permission.RECORD_AUDIO" />
-  </config-file>
 </widget>
