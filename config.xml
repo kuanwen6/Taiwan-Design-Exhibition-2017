@@ -17,38 +17,34 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="android-minSdkVersion" value="14" />
+        <preference name="android-minSdkVersion" value="23" />
         <preference name="android-maxSdkVersion" value="25" />
         <preference name="android-targetSdkVersion" value="24" />
         <preference name="SplashMaintainAspectRatio" value="false" />
         <preference name="SplashShowOnlyFirstTime" value="false" />
+        <preference name="Fullscreen" value="true" />
+        <icon src="logo.png" />
+        <splash src="img/splash.png" />
     </platform>
     <platform name="ios">
-        <preference name="target-device" value="handset" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
+        <preference name="target-device" value="handset" />
         <preference name="FadeSplashScreen" value="true" />
         <preference name="FadeSplashScreenDuration" value="750" />
+        <icon src="logo.png" width="180" height="180" />
+        <gap:splash src="img/splash.png" width="320" height="480"/>
     </platform>
-    <gap:config-file overwrite="true" parent="UIViewControllerBasedStatusBarAppearance" platform="ios">
-        <false />
-    </gap:config-file>
-    <config-file mode="replace" parent="UIStatusBarHidden" platform="ios">
-        <true />
-    </config-file>
-    <splash src="img/splash.png" />
+    
+    
     <preference name="orientation" value="portrait" />
-    <preference name="Fullscreen" value="true" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="ShowSplashScreenSpinner" value="true" />
-    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
     <plugin name="com.unarin.cordova.beacon" spec="https://github.com/petermetz/cordova-plugin-ibeacon.git" />
     <plugin name="cordova-plugin-device" spec="~1.1.6" />
-    <plugin name="cordova-custom-config" spec="~4.0.2" />
 </widget>
