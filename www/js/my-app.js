@@ -36,7 +36,7 @@ myApp.onPageBeforeInit('home', function(page) {
 myApp.onPageInit('home', function(page) {
   mainView.hideNavbar(false);
 
-  var my_media = new Media('bgm.mp3', function () {
+  var my_media = new Media("/android_asset/www/js/bgm.mp3", function () {
     console.log('success');
   }, function (err) {
     console.log(err);
