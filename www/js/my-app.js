@@ -15,11 +15,31 @@ $$(document).on('backbutton', function() {
   view.router.back();
 });
 
+let bgm;
+
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
   // Setup beacon detection
   beacon_util.init_beacon_detection();
 
+  let path;
+  if(device.platform == 'Android') {
+    path = "/android_asset/www/audio/bgm.mp3";
+  } else {
+    path ="audio/bgm.mp3";
+  }
+
+  bgm = new Media(path, function () {
+    console.log('success');
+  }, function (err) {
+    console.log(err);
+  }, function (code) {
+      if (code == Media.MEDIA_STOPPED) {
+        bgm.play();
+      }
+  });
+  
+  bgm.play();
 });
 
 myApp.onPageBeforeInit('home', function(page) {
