@@ -16,7 +16,7 @@ $$(document).on('backbutton', function() {
 });
 
 
-const bgm;
+let bgm;
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
