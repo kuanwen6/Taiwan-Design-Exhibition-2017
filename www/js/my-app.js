@@ -11,6 +11,11 @@ var mainView = myApp.addView('.view-main', {
 });
 
 $$(document).on('backbutton', function() {
+  $$('.navbar').css('background-image', 'none');
+  $$('.navbar').css('background-size', 'none');
+  $$('.navbar').css('height', '44px');
+  $$('.navbar-inner').css('padding-top', '0px');
+  mainView.hideNavbar(false);
   var view = myApp.getCurrentView();
   view.router.back();
 });
