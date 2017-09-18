@@ -23,43 +23,31 @@
     <preference name="SplashMaintainAspectRatio" value="false" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="Fullscreen" value="true" />
-    <icon src="logo.png" />
-    <splash src="splash.png" />
+    <icon src="res/android/icon/logo.png" />
+    <splash src="res/android/splash/splash.png" />
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <preference name="target-device" value="handset" />
+    <preference name="webviewbounce" value="false" />
     <!--
     <preference name="FadeSplashScreen" value="true" />
     <preference name="FadeSplashScreenDuration" value="750" />
 -->
-    <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
-    <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
-    <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
-    <splash height="1242" src="resources/ios/splash/Default-Landscape-736h.png" width="2208" />
-    <splash height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
-    <splash height="768" src="resources/ios/splash/Default-Landscape~ipad.png" width="1024" />
-    <splash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
-    <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
-    <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
-    <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
-    <icon height="57" src="logo.png" width="57" />
-    <icon height="114" src="logo.png" width="114" />
+    <splash height="2208" src="resources/ios/splash/1242x2208.png" width="1242" />
+    <splash height="1334" src="resources/ios/splash/750x1334.png" width="750" />
+    <splash height="960" src="resources/ios/splash/640x960.png" width="640" />
+    <splash height="480" src="resources/ios/splash/320x480.png" width="320" />
     <icon height="40" src="logo.png" width="40" />
     <icon height="80" src="logo.png" width="80" />
-    <icon height="50" src="logo.png" width="50" />
-    <icon height="100" src="logo.png" width="100" />
-    <icon height="60" src="logo.png" width="60" />
     <icon height="120" src="logo.png" width="120" />
     <icon height="180" src="logo.png" width="180" />
-    <icon height="72" src="logo.png" width="72" />
-    <icon height="144" src="logo.png" width="144" />
-    <icon height="76" src="logo.png" width="76" />
-    <icon height="152" src="logo.png" width="152" />
     <icon height="29" src="logo.png" width="29" />
     <icon height="58" src="logo.png" width="58" />
     <icon height="87" src="logo.png" width="87" />
+    <icon height="512" src="logo.png" width="512" />
+    <icon height="1024" src="logo.png" width="1024" />
   </platform>
   <preference name="orientation" value="portrait" />
   <preference name="AutoHideSplashScreen" value="true" />
