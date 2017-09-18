@@ -36,6 +36,14 @@ myApp.onPageBeforeInit('home', function(page) {
 myApp.onPageInit('home', function(page) {
   mainView.hideNavbar(false);
 
+  var my_media = new Media('bgm.mp3', function () {
+    console.log('success');
+  }, function (err) {
+    console.log('fail: '+ err);
+  });
+
+  my_media.play();
+
   let i = 0;
   for (const planet of planets) {
     var $$img = $$('<img class="planet" src="./img/pavilion_logo/' + planet.name + '.png">');

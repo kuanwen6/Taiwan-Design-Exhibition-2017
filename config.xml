@@ -51,4 +51,5 @@
     <plugin name="com.unarin.cordova.beacon" spec="https://github.com/petermetz/cordova-plugin-ibeacon.git" />
     <plugin name="cordova-plugin-device" spec="~1.1.6" />
     <plugin name="cordova-custom-config" spec="~4.0.2" />
+    <plugin name="cordova-plugin-media" spec="~3.0.1" />
 </widget>
