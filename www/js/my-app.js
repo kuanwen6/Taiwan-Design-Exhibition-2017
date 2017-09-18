@@ -39,7 +39,7 @@ myApp.onPageInit('home', function(page) {
   var my_media = new Media('bgm.mp3', function () {
     console.log('success');
   }, function (err) {
-    console.log('fail: '+ err);
+    console.log(err);
   });
 
   my_media.play();
