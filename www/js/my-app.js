@@ -11,15 +11,40 @@ var mainView = myApp.addView('.view-main', {
 });
 
 $$(document).on('backbutton', function() {
+  $$('.navbar').css('background-image', 'none');
+  $$('.navbar').css('background-size', 'none');
+  $$('.navbar').css('height', '44px');
+  $$('.navbar-inner').css('padding-top', '0px');
+  mainView.hideNavbar(false);
   var view = myApp.getCurrentView();
   view.router.back();
 });
+
+let bgm;
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
   // Setup beacon detection
   beacon_util.init_beacon_detection();
 
+  let path;
+  if(device.platform == 'Android') {
+    path = "/android_asset/www/audio/bgm.mp3";
+  } else {
+    path ="audio/bgm.mp3";
+  }
+
+  bgm = new Media(path, function () {
+    console.log('success');
+  }, function (err) {
+    console.log(err);
+  }, function (code) {
+      if (code == Media.MEDIA_STOPPED) {
+        bgm.play();
+      }
+  });
+  
+  bgm.play();
 });
 
 myApp.onPageBeforeInit('home', function(page) {

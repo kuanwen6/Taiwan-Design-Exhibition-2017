@@ -1,12 +1,4 @@
 {
-    "cordova-plugin-whitelist": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-whitelist@~1.2.0"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-console": {
         "source": {
             "type": "registry",
@@ -48,10 +40,10 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-custom-config": {
+    "cordova-plugin-media": {
         "source": {
             "type": "registry",
-            "id": "cordova-custom-config@~4.0.2"
+            "id": "cordova-plugin-media@3.0.1"
         },
         "is_top_level": true,
         "variables": {}
