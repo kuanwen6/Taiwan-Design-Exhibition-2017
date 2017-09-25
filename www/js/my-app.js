@@ -296,7 +296,7 @@ myApp.onPageInit('information', function(page) {
   });
 
 
-  $$('.back_to_home').on('click', () => {
+  $$('.left>a').on('click', () => {
     mainView.hideNavbar(false);
     mainView.router.back({url:'home.html', force: true});
   });
