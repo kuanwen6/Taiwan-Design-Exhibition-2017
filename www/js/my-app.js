@@ -273,7 +273,7 @@ myApp.onPageInit('collection', function(page) {
 
   $$('.back_to_home').on('click', () => {
     mainView.hideNavbar(false);
-    mainView.router.back({url:'home.html'});
+    mainView.router.back({url:'home.html', force: true});
   });
 });
 
