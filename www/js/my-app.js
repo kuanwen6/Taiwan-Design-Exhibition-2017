@@ -61,7 +61,8 @@ myApp.onPageBeforeInit('home', function(page) {
 myApp.onPageInit('home', function(page) {
   mainView.hideNavbar(false);
 
-  $$('home').empty();
+  $$('home').remove('.planet');
+  $$('home').remove('.planet_button');
   let i = 0;
   for (const planet of planets) {
     var $$img = $$('<img class="planet" src="./img/pavilion_logo/' + planet.name + '.png">');
