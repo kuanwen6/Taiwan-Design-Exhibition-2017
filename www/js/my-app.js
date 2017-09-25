@@ -271,8 +271,9 @@ myApp.onPageInit('collection', function(page) {
     }
   }
 
-  $$('.back').on('click', () => {
+  $$('.back_to_home').on('click', () => {
     mainView.hideNavbar(false);
+    mainView.router.back({url:'home.html'});
   });
 });
 
