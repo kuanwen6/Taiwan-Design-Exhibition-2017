@@ -303,6 +303,21 @@ myApp.onPageInit('information', function(page) {
 myApp.onPageInit('challenge', function(page) {
   mainView.showNavbar(false);
   console.log(page);
+  bgm.pause();
+  let path;
+  if(device.platform == 'Android') {
+    path = "/android_asset/www/audio/bgm_challenge.mp3";
+  } else {
+    path ="audio/bgm_challenge.mp3";
+  }
+
+  const bgm_challenge = new Media(path, function () {
+    console.log('success');
+  }, function (err) {
+    console.log(err);
+  });
+  
+  bgm_challenge.play();
 
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
@@ -337,21 +352,6 @@ myApp.onPageInit('challenge', function(page) {
   let siteNum = 0;
   if (page.context.siteNum) {
     siteNum = page.context.siteNum;
-    bgm.pause();
-    let path;
-    if(device.platform == 'Android') {
-      path = "/android_asset/www/audio/bgm_challenge.mp3";
-    } else {
-      path ="audio/bgm_challenge.mp3";
-    }
-
-    const bgm_challenge = new Media(path, function () {
-      console.log('success');
-    }, function (err) {
-      console.log(err);
-    });
-    
-    bgm_challenge.play();
   }
   
 
