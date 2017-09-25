@@ -295,6 +295,29 @@ myApp.onPageInit('information', function(page) {
 })
 
 myApp.onPageInit('challenge', function(page) {
+  console.log('challenge');
+  bgm.pause();
+ //bgm.stop();
+  let path;
+  if(device.platform == 'Android') {
+    path = "/android_asset/www/audio/bgm_challenge.mp3";
+  } else {
+    path ="audio/bgm_challenge.mp3";
+  }
+
+  const bgm_challenge = new Media(path, function () {
+    console.log('success');
+  }, function (err) {
+    console.log(err);
+  }, function (code) {
+      if (code == Media.MEDIA_STOPPED) {
+        bgm_challenge.play();
+      }
+  });
+  
+  bgm_challenge.play();
+
+
   mainView.showNavbar(false);
   console.log(page);
 
@@ -381,6 +404,9 @@ myApp.onPageInit('challenge', function(page) {
         `);
 
         $$('#ok-btn').on('click', () => {
+          bgm_challenge.release();
+          bgm.play();
+
           mainView.router.load({
             url: 'home.html',
             context: {
