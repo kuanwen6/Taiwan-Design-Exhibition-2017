@@ -59,6 +59,7 @@ myApp.onPageBeforeInit('home', function(page) {
 });
 
 myApp.onPageInit('home', function(page) {
+  console.log(page);
   mainView.hideNavbar(false);
 
   $$('.planet').remove();
