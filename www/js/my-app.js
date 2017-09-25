@@ -404,6 +404,7 @@ myApp.onPageInit('challenge', function(page) {
         `);
 
         $$('#ok-btn').on('click', () => {
+          bgm_challenge.pause();
           bgm_challenge.release();
           bgm.play();
 
