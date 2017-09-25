@@ -61,8 +61,8 @@ myApp.onPageBeforeInit('home', function(page) {
 myApp.onPageInit('home', function(page) {
   mainView.hideNavbar(false);
 
-  $$('home').remove('.planet');
-  $$('home').remove('.planet_button');
+  $$('.planet').remove();
+  $$('.planet_button').remove();
   let i = 0;
   for (const planet of planets) {
     var $$img = $$('<img class="planet" src="./img/pavilion_logo/' + planet.name + '.png">');
@@ -302,6 +302,21 @@ myApp.onPageInit('information', function(page) {
 myApp.onPageInit('challenge', function(page) {
   mainView.showNavbar(false);
   console.log(page);
+  bgm.pause();
+  let path;
+  if(device.platform == 'Android') {
+    path = "/android_asset/www/audio/bgm_challenge.mp3";
+  } else {
+    path ="audio/bgm_challenge.mp3";
+  }
+
+  const bgm_challenge = new Media(path, function () {
+    console.log('success');
+  }, function (err) {
+    console.log(err);
+  });
+  
+  bgm_challenge.play();
 
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
@@ -332,9 +347,14 @@ myApp.onPageInit('challenge', function(page) {
   }, 3000);
 
   let number = 0;
-  const siteNum = page.context.siteNum;
 
-  const questions = ftd[siteNum].questions;
+  let siteNum = 0;
+  if (page.context.siteNum) {
+    siteNum = page.context.siteNum;
+  }
+  
+
+  let questions = ftd[siteNum].questions;
   let result = ['pass', 'pass'];
   let getItem = false;
 
@@ -386,6 +406,10 @@ myApp.onPageInit('challenge', function(page) {
         `);
 
         $$('#ok-btn').on('click', () => {
+          bgm_challenge.pause();
+          bgm_challenge.release();
+          bgm.play();
+          
           mainView.router.load({
             url: 'home.html',
             context: {
