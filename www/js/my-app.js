@@ -240,7 +240,6 @@ myApp.onPageInit('home', function(page) {
   });
 
   if(page.context.getItem) {
-    console.log('aaa');
     setTimeout(() => {
     myApp.addNotification({
                     title: '台灣設計展',
@@ -256,6 +255,7 @@ myApp.onPageInit('home', function(page) {
 
 myApp.onPageInit('collection', function(page) {
   mainView.hideNavbar(false);
+  console.log(page);
 
   $('.collections').empty();
   for (var i = 0; i < 8; i++) {
@@ -277,6 +277,7 @@ myApp.onPageInit('collection', function(page) {
 
 
 myApp.onPageInit('information', function(page) {
+  console.log(page);
   mainView.showNavbar(false);
   $$('.navbar').css('background-image', "url('img/device-background/information-background.png')");
   $$('.navbar').css('background-size', 'cover');
@@ -299,24 +300,9 @@ myApp.onPageInit('information', function(page) {
 
 })
 
-myApp.onPageReinit('challenge', function(page) {
+myApp.onPageInit('challenge', function(page) {
   mainView.showNavbar(false);
   console.log(page);
-  bgm.pause();
-  let path;
-  if(device.platform == 'Android') {
-    path = "/android_asset/www/audio/bgm_challenge.mp3";
-  } else {
-    path ="audio/bgm_challenge.mp3";
-  }
-
-  const bgm_challenge = new Media(path, function () {
-    console.log('success');
-  }, function (err) {
-    console.log(err);
-  });
-  
-  bgm_challenge.play();
 
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
@@ -351,6 +337,21 @@ myApp.onPageReinit('challenge', function(page) {
   let siteNum = 0;
   if (page.context.siteNum) {
     siteNum = page.context.siteNum;
+    bgm.pause();
+    let path;
+    if(device.platform == 'Android') {
+      path = "/android_asset/www/audio/bgm_challenge.mp3";
+    } else {
+      path ="audio/bgm_challenge.mp3";
+    }
+
+    const bgm_challenge = new Media(path, function () {
+      console.log('success');
+    }, function (err) {
+      console.log(err);
+    });
+    
+    bgm_challenge.play();
   }
   
 
