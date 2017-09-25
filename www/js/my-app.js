@@ -299,7 +299,7 @@ myApp.onPageInit('information', function(page) {
 
 })
 
-myApp.onPageInit('challenge', function(page) {
+myApp.onPageReinit('challenge', function(page) {
   mainView.showNavbar(false);
   console.log(page);
   bgm.pause();
@@ -409,7 +409,7 @@ myApp.onPageInit('challenge', function(page) {
           bgm_challenge.pause();
           bgm_challenge.release();
           bgm.play();
-          
+
           mainView.router.load({
             url: 'home.html',
             context: {
