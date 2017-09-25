@@ -11,11 +11,19 @@ var mainView = myApp.addView('.view-main', {
 });
 
 $$(document).on('backbutton', function() {
+  $$('.navbar').css('background-image', 'none');
+  $$('.navbar').css('background-size', 'none');
+  $$('.navbar').css('height', '44px');
+  $$('.navbar-inner').css('padding-top', '0px');
+  mainView.hideNavbar(false);
   var view = myApp.getCurrentView();
   view.router.back();
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27ab2a23b1a54dc403a9f4bf8f8354a282f952b2
 let bgm;
 
 $$(document).on('deviceready', function() {
@@ -40,7 +48,10 @@ $$(document).on('deviceready', function() {
       }
   });
   
+<<<<<<< HEAD
 
+=======
+>>>>>>> 27ab2a23b1a54dc403a9f4bf8f8354a282f952b2
   bgm.play();
 });
 
@@ -56,8 +67,11 @@ myApp.onPageBeforeInit('home', function(page) {
 });
 
 myApp.onPageInit('home', function(page) {
+  console.log(page);
   mainView.hideNavbar(false);
 
+  $$('.planet').remove();
+  $$('.planet_button').remove();
   let i = 0;
   for (const planet of planets) {
     var $$img = $$('<img class="planet" src="./img/pavilion_logo/' + planet.name + '.png">');
@@ -87,13 +101,13 @@ myApp.onPageInit('home', function(page) {
         }, 500);
         $$(window).once('click', (event) => {
           $$('.ai_speech2').hide();
-          beacon_util.startScanForBeacons();
+        //  beacon_util.startScanForBeacons();
         });
       });
     });
   } else {
     $$(window).once('click', (event) => {
-      beacon_util.startScanForBeacons();
+    //  beacon_util.startScanForBeacons();
     });
   }
 
@@ -177,7 +191,7 @@ myApp.onPageInit('home', function(page) {
             `<div class="picker-modal" style="height: auto;">
               <div class="picker-modal-inner">
                 <div class="content-block" style="margin: 15px 0;">
-                  <h2>蒐集品A</h2>
+                  <h2>收藏品A</h2>
                   <p>需要答對此關卡共2題答案</p>
                   <p><span style="color: red;">${window.localStorage.getItem(`site${siteNum}Answered`)}</span> / 2題</p>
                 </div>
@@ -200,7 +214,7 @@ myApp.onPageInit('home', function(page) {
             `<div class="picker-modal" style="height: auto;">
             <div class="picker-modal-inner">
               <div class="content-block" style="margin: 15px 0;">
-                <h2>蒐集品B</h2>
+                <h2>收藏品B</h2>
                 <p><span style="color: red;">開啟藍芽並到此展場附近便可以獲得</p>
               </div>
             </div>
@@ -235,11 +249,10 @@ myApp.onPageInit('home', function(page) {
   });
 
   if(page.context.getItem) {
-    console.log('aaa');
     setTimeout(() => {
     myApp.addNotification({
                     title: '台灣設計展',
-                    subtitle: '已完成「'+ planets[page.context.station].name_zh + '」之蒐集條件',
+                    subtitle: '已完成「'+ planets[page.context.station].name_zh + '」之收集條件',
                     message: '您已獲得' + planets[page.context.station].name_zh + '的收藏品:  '+ ftd[page.context.station].items[0].title,
                     media: '<img src="./img/collections/' + 'site' + page.context.station + '-item0.png">',
                     hold: 8000,
@@ -251,6 +264,7 @@ myApp.onPageInit('home', function(page) {
 
 myApp.onPageInit('collection', function(page) {
   mainView.hideNavbar(false);
+  console.log(page);
 
   $('.collections').empty();
   for (var i = 0; i < 8; i++) {
@@ -265,13 +279,18 @@ myApp.onPageInit('collection', function(page) {
     }
   }
 
-  $$('.back').on('click', () => {
+  $$('.back_to_home').on('click', () => {
     mainView.hideNavbar(false);
+    mainView.router.back({
+      url: 'home.html',
+      force: true,
+    });
   });
 });
 
 
 myApp.onPageInit('information', function(page) {
+  console.log(page);
   mainView.showNavbar(false);
   $$('.navbar').css('background-image', "url('img/device-background/information-background.png')");
   $$('.navbar').css('background-size', 'cover');
@@ -316,6 +335,21 @@ myApp.onPageInit('challenge', function(page) {
 
   mainView.showNavbar(false);
   console.log(page);
+  bgm.pause();
+  let path;
+  if(device.platform == 'Android') {
+    path = "/android_asset/www/audio/bgm_challenge.mp3";
+  } else {
+    path ="audio/bgm_challenge.mp3";
+  }
+
+  const bgm_challenge = new Media(path, function () {
+    console.log('success');
+  }, function (err) {
+    console.log(err);
+  });
+  
+  bgm_challenge.play();
 
   //  navbar background, opacity 0
   $$('.navbar').css('background-image', 'none');
@@ -346,9 +380,14 @@ myApp.onPageInit('challenge', function(page) {
   }, 3000);
 
   let number = 0;
-  const siteNum = page.context.siteNum;
 
-  const questions = ftd[siteNum].questions;
+  let siteNum = 0;
+  if (page.context.siteNum) {
+    siteNum = page.context.siteNum;
+  }
+  
+
+  let questions = ftd[siteNum].questions;
   let result = ['pass', 'pass'];
   let getItem = false;
 

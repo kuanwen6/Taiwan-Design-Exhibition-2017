@@ -10,7 +10,11 @@
         "spec": "3.0.1",
         "type": "version"
       },
+<<<<<<< HEAD
       "C:\\Project\\Tainan-Design\\Taiwan-Design-Exhibition-2017\\node_modules"
+=======
+      "C:\\Project\\tainan\\Taiwan-Design-Exhibition-2017\\node_modules"
+>>>>>>> 27ab2a23b1a54dc403a9f4bf8f8354a282f952b2
     ]
   ],
   "_from": "cordova-plugin-media@3.0.1",
@@ -45,7 +49,11 @@
   "_shasum": "5e46e76cfa77d4ed28a87598cb0728e4ebab6f27",
   "_shrinkwrap": null,
   "_spec": "cordova-plugin-media@3.0.1",
+<<<<<<< HEAD
   "_where": "C:\\Project\\Tainan-Design\\Taiwan-Design-Exhibition-2017\\node_modules",
+=======
+  "_where": "C:\\Project\\tainan\\Taiwan-Design-Exhibition-2017\\node_modules",
+>>>>>>> 27ab2a23b1a54dc403a9f4bf8f8354a282f952b2
   "author": {
     "name": "Apache Software Foundation"
   },
