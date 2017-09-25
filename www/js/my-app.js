@@ -309,10 +309,6 @@ myApp.onPageInit('challenge', function(page) {
     console.log('success');
   }, function (err) {
     console.log(err);
-  }, function (code) {
-      if (code == Media.MEDIA_STOPPED) {
-        bgm_challenge.play();
-      }
   });
   
   bgm_challenge.play();
