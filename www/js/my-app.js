@@ -19,13 +19,12 @@ $$(document).on('backbutton', function() {
   var view = myApp.getCurrentView();
 
   var page = view.activePage; 
-  myApp.hidePreloader();
+
   if(page.name=="home"){
-    e.preventDefault();
-    if(myApp.confirm("確定要離開台灣設計展嗎？")) {
+    var result = myApp.confirm("確定要離開台灣設計展嗎？", function() {
       navigator.app.clearHistory();
       navigator.app.exitApp();
-    }
+    });   
   }else{
     view.router.back();
   }
