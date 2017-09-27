@@ -32,12 +32,16 @@ $$(document).on('backbutton', function() {
 
 $$(document).on('pause', function() {
   beacon_util.stopScanForBeacons();
-  bgm.pause();
+  bgm.stop();
+
+  console.log("pause");
 });
 
 $$(document).on('resume', function() {
   beacon_util.startScanForBeacons();
   bgm.play();
+
+  console.log("resume");
 });
 
 let bgm;
