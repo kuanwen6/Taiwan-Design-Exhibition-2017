@@ -21,7 +21,7 @@ $$(document).on('backbutton', function() {
   var page = view.activePage; 
 
   if(page.name=="home"){
-    var result = myApp.confirm("確定要離開台灣設計展嗎？", function() {
+    var result = myApp.confirm("確定要離開台灣設計展嗎？", "台灣設計展", function() {
       navigator.app.clearHistory();
       navigator.app.exitApp();
     });   
