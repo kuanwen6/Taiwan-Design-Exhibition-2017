@@ -52,22 +52,22 @@ $$(document).on('deviceready', function() {
   beacon_util.init_beacon_detection();
 
   let path;
-  if(device.platform == 'Android') {
+  if (device.platform == 'Android') {
     path = "/android_asset/www/audio/bgm.mp3";
   } else {
-    path ="audio/bgm.mp3";
+    path = "audio/bgm.mp3";
   }
 
-  bgm = new Media(path, function () {
+  bgm = new Media(path, function() {
     console.log('success');
-  }, function (err) {
+  }, function(err) {
     console.log(err);
-  }, function (code) {
-      if (code == Media.MEDIA_STOPPED) {
-        bgm.play();
-      }
+  }, function(code) {
+    if (code == Media.MEDIA_STOPPED) {
+      bgm.play();
+    }
   });
-  
+
   bgm.play();
 });
 
@@ -117,13 +117,13 @@ myApp.onPageInit('home', function(page) {
         }, 500);
         $$(window).once('click', (event) => {
           $$('.ai_speech2').hide();
-        //  beacon_util.startScanForBeacons();
+          //  beacon_util.startScanForBeacons();
         });
       });
     });
   } else {
     $$(window).once('click', (event) => {
-    //  beacon_util.startScanForBeacons();
+      //  beacon_util.startScanForBeacons();
     });
   }
 
@@ -264,16 +264,16 @@ myApp.onPageInit('home', function(page) {
     }
   });
 
-  if(page.context.getItem) {
+  if (page.context.getItem) {
     setTimeout(() => {
-    myApp.addNotification({
-                    title: '台灣設計展',
-                    subtitle: '已完成「'+ planets[page.context.station].name_zh + '」之收集條件',
-                    message: '您已獲得' + planets[page.context.station].name_zh + '的收藏品:  '+ ftd[page.context.station].items[0].title,
-                    media: '<img src="./img/collections/' + 'site' + page.context.station + '-item0.png">',
-                    hold: 8000,
-                    closeOnClick: true,
-                });
+      myApp.addNotification({
+        title: '台灣設計展',
+        subtitle: '已完成「' + planets[page.context.station].name_zh + '」之收集條件',
+        message: '您已獲得' + planets[page.context.station].name_zh + '的收藏品:  ' + ftd[page.context.station].items[0].title,
+        media: '<img src="./img/collections/' + 'site' + page.context.station + '-item0.png">',
+        hold: 8000,
+        closeOnClick: true,
+      });
     }, 500);
   }
 });
@@ -283,12 +283,23 @@ myApp.onPageInit('collection', function(page) {
   console.log(page);
 
   $('.collections').empty();
-  for (var i = 0; i < 8; i++) {
-    for (var j = 1; j < 3; j++) {
+  for (let i = 0; i < 8; i++) {
+    for (let j = 1; j < 3; j++) {
       var $$div = $$('<div></div>');
       $$('.collections').append($$div);
       if (window.localStorage.getItem('Collection' + i + j)) {
-        $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
+        let $$img = $$('<img src="./img/collections/site' + i + '-item' + (j - 1) + '.png">');
+        $$div.append($$img);
+        $$img.on('click', (event) => {
+          event.stopPropagation();
+          if ($$img.offset().left > $$(window).width() / 2) {
+            $$('.collection_info').addClass('collection_info_r');
+          } else {
+            $$('.collection_info').removeClass('collection_info_r');
+          }
+          $$('.collection_info').css({ top: $$img.offset().top + $$img.height() / 2 + 'px', left: $$img.offset().left + $$img.width() / 2 + 'px' });
+          $$('.collection_info').css('display', 'inline-table');
+        });
       } else {
         $$div.append('<img src="./img/collections/site' + i + '-item' + (j - 1) + '-black.png">');
       }
@@ -297,7 +308,15 @@ myApp.onPageInit('collection', function(page) {
 
   $$('.back_to_home').on('click', () => {
     mainView.hideNavbar(false);
-    mainView.router.back({url:'home.html', force: true});
+    mainView.router.back({ url: 'home.html', force: true });
+  });
+
+  $$(window).on('click', (event) => {
+    if (!$(event.target).closest('.collection_info').length) {
+      if ($('.collection_info').is(':visible')) {
+        $$('.collection_info').hide();
+      }
+    }
   });
 });
 
@@ -311,7 +330,6 @@ myApp.onPageInit('information', function(page) {
   $$('.navbar').css('height', '64px');
   $$('.navbar-inner').css('padding-top', '20px');
 
-
   $$('.left').on('click', () => {
     $$('.navbar').css('background-image', 'none');
     $$('.navbar').css('background-size', 'none');
@@ -319,12 +337,10 @@ myApp.onPageInit('information', function(page) {
     $$('.navbar-inner').css('padding-top', '0px');
   });
 
-
   $$('.left>a').on('click', () => {
     mainView.hideNavbar(false);
-    mainView.router.back({url:'home.html', force: true});
+    mainView.router.back({ url: 'home.html', force: true });
   });
-
 })
 
 myApp.onPageInit('challenge', function(page) {
@@ -332,18 +348,18 @@ myApp.onPageInit('challenge', function(page) {
   console.log(page);
   bgm.pause();
   let path;
-  if(device.platform == 'Android') {
+  if (device.platform == 'Android') {
     path = "/android_asset/www/audio/bgm_challenge.mp3";
   } else {
-    path ="audio/bgm_challenge.mp3";
+    path = "audio/bgm_challenge.mp3";
   }
 
-  const bgm_challenge = new Media(path, function () {
+  const bgm_challenge = new Media(path, function() {
     console.log('success');
-  }, function (err) {
+  }, function(err) {
     console.log(err);
   });
-  
+
   bgm_challenge.play();
 
   //  navbar background, opacity 0
@@ -380,7 +396,6 @@ myApp.onPageInit('challenge', function(page) {
   if (page.context.siteNum) {
     siteNum = page.context.siteNum;
   }
-  
 
   let questions = ftd[siteNum].questions;
   let result = ['pass', 'pass'];
