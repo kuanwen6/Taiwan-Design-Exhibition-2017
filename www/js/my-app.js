@@ -30,6 +30,16 @@ $$(document).on('backbutton', function() {
   }
 });
 
+$$(document).on('pause', function() {
+  beacon_util.stopScanForBeacons();
+  bgm.pause();
+});
+
+$$(document).on('resume', function() {
+  beacon_util.startScanForBeacons();
+  bgm.play();
+});
+
 let bgm;
 
 $$(document).on('deviceready', function() {
