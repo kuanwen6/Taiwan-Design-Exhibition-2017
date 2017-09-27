@@ -117,13 +117,13 @@ myApp.onPageInit('home', function(page) {
         }, 500);
         $$(window).once('click', (event) => {
           $$('.ai_speech2').hide();
-          //  beacon_util.startScanForBeacons();
+          beacon_util.startScanForBeacons();
         });
       });
     });
   } else {
     $$(window).once('click', (event) => {
-      //  beacon_util.startScanForBeacons();
+      beacon_util.startScanForBeacons();
     });
   }
 
