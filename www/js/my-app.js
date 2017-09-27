@@ -32,7 +32,7 @@ $$(document).on('backbutton', function() {
 
 $$(document).on('pause', function() {
   beacon_util.stopScanForBeacons();
-  bgm.stop();
+  bgm.pause();
 
   console.log("pause");
 });

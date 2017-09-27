@@ -22,7 +22,7 @@
         <preference name="SplashMaintainAspectRatio" value="false" />
         <preference name="SplashShowOnlyFirstTime" value="false" />
         <preference name="Fullscreen" value="true" />
-        <preference name="KeepRunning" value="false" />
+        <preference name="KeepRunning" value="true" />
         <icon src="res/android/icon/logo.png" />
         <splash src="res/android/splash/splash.png" />
     </platform>
