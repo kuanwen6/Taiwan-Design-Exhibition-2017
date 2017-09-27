@@ -17,7 +17,18 @@ $$(document).on('backbutton', function() {
   $$('.navbar-inner').css('padding-top', '0px');
   mainView.hideNavbar(false);
   var view = myApp.getCurrentView();
-  view.router.back();
+
+  var page = view.activePage; 
+  myApp.hidePreloader();
+  if(page.name=="home"){
+    e.preventDefault();
+    if(myApp.confirm("確定要離開台灣設計展嗎？")) {
+      navigator.app.clearHistory();
+      navigator.app.exitApp();
+    }
+  }else{
+    view.router.back();
+  }
 });
 
 let bgm;
