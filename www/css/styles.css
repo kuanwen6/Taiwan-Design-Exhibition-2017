@@ -92,6 +92,32 @@ div[data-page='collection'] {
   margin-right: 4px;
 }
 
+.collection_info {
+  position: absolute;
+  transform: translate(-25%, 0);
+  background-image: url('../img/collection_info_lbg.png');
+  background-size: 100% 100%;
+  padding: 40px 15px 25px 20px;
+  color: white;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  display: none;
+}
+
+.collection_info_r {
+  transform: translate(-75%, 0);
+  background-image: url('../img/collection_info_rbg.png');
+}
+
+.collection_info span:first-child {
+  font-size: 4.6vw;
+}
+
+.collection_info span:nth-child(2) {
+  font-size: 4.4vw;
+}
+
 .collections div img {
   position: absolute;
   display: block;
