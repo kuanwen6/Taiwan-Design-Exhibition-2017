@@ -367,6 +367,12 @@ myApp.onPageInit('challenge', function(page) {
     $$('.loading').html('第一題');
   }, 3000);
 
+  let siteNum = 0;
+  if (page.context.siteNum) {
+    siteNum = page.context.siteNum;
+  }
+
+
   const number1 = Math.floor(Math.random()*ftd[siteNum].questions.length);
   let number2 = Math.floor(Math.random()*ftd[siteNum].questions.length);
   while (number1 === number2) {
@@ -375,11 +381,6 @@ myApp.onPageInit('challenge', function(page) {
   const pickNumber = [number1, number2];
 
   let number = 0;
-
-  let siteNum = 0;
-  if (page.context.siteNum) {
-    siteNum = page.context.siteNum;
-  }
 
   let questions = ftd[siteNum].questions;
   let result = ['pass', 'pass'];
