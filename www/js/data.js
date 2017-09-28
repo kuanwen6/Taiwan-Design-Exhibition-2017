@@ -52,8 +52,10 @@ const ftd = [{
     <p>大學路社E2停車場<span style="color: red;">（收費）</span>：臺南市東區大學路與育樂街66巷交叉路口</p>`,
     items: [{
       title: '古代書籍',
+      info: '<span>/ 古代書籍 /</span><br><span>「主題館」收藏品。<br>塵封已久的神秘古書，據說裡面記載著幸福的祕密。</span>'
     }, {
       title: '老舊的尺規',
+      info: '<span>/ 老舊的尺規 /</span><br><span>「主題館」收藏品。<br>聽說是幾百年前的建築師在使用的工具呢。</span>'
     }],
     beacons: ['801-52342-28213', '801-50788-41017'],
     questions: [{
@@ -115,9 +117,11 @@ const ftd = [{
     <p>國立成功大學光復校區計時收費停車場<span style="color: red;">（收費）</span>：臺南市東區大學路1號</p>
     <p>大學路社E2停車場<span style="color: red;">（收費）</span>：臺南市東區大學路與育樂街66巷交叉路口</p>`,
     items: [{
-      title: '南風',
+      title: '徐徐南風',
+      info: '<span>/ 徐徐南風 /</span><br><span>「南風館」收藏品。<br>哇，好涼的風阿！</span>'
     }, {
       title: '毛筆',
+      info: '<span>/ 毛筆 /</span><br><span>「南風館」收藏品。<br>這筆，感覺不是單純的一支筆。</span>'
     }],
     beacons: ['801-52342-28213', '801-50788-41017'],
     questions: [{
@@ -176,8 +180,10 @@ const ftd = [{
     <p>台灣聯通臺南忠義場<span style="color: red;">（收費）</span>：臺南市中西區忠義路二段177號旁</p>`,
     items: [{
       title: '貪婪之壺',
+      info: '<span>/ 貪婪之壺 /</span><br><span>「工藝館」收藏品。<br>表面的圖案隱約有個詭異的笑容。</span>'
     }, {
       title: '祕法指環',
+      info: '<span>/ 祕法指環 /</span><br><span>「工藝館」收藏品。<br>據說戴上去的人，會喪失自我。</span>'
     }],
     beacons: ['801-42864-8916'],
     questions: [{
@@ -237,9 +243,11 @@ const ftd = [{
     <p>新光三越新天地二館停車場<span style="color: red;">（收費）</span>：永福路一段189號</p>
     <p>客家文化會館路外停車場<span style="color: red;">（收費）</span>：夏林路客家文化會館旁</p>`,
     items: [{
-      title: '藍色染料',
+      title: '藍色藥水',
+      info: '<span>/ 藍色藥水 /</span><br><span>「新銳館」收藏品。<br>國小實驗室的硫酸銅水溶液。</span>'
     }, {
       title: '藍晒杯墊',
+      info: '<span>/ 藍晒杯墊 /</span><br><span>「新銳館」收藏品。<br>有藍晒圖的杯墊，文青必備。</span>'
     }],
     beacons: ['801-13805-7574', '801-6267-58260'],
     questions: [{
@@ -295,8 +303,10 @@ const ftd = [{
     <p>成大醫院汽機車停車場<span style="color: red;">（收費）</span>：臺南市北區小東路35號</p>`,
     items: [{
       title: '瓶中信',
+      info: '<span>/ 瓶中信 /</span><br><span>「國際館」收藏品。<br>一對德國夫婦，發現了108年前的瓶中信......</span>'
     }, {
       title: '核廢料',
+      info: '<span>/ 核廢料 /</span><br><span>「國際館」收藏品。<br>無核家園，用愛發電。</span>'
     }],
     beacons: ['801-1735-11217', '801-42299-52938'],
     questions: [{
@@ -351,9 +361,11 @@ const ftd = [{
     <p>延平郡王祠大埔街口路外停車場<span style="color: red;">（收費）</span>：臺南市中西區開山路與大埔街路口西側</p>
     <p>Times臺南忠義府前停車場<span style="color: red;">（收費）</span>：臺南市中西區忠義路一段96號旁空地</p>`,
     items: [{
-      title: '劍獅雕像',
+      title: '劍獅',
+      info: '<span>/ 劍獅 /</span><br><span>「藝陣館」收藏品。<br>咬著一把劍的獅子。</span>'
     }, {
-      title: '破舊的嗩吶',
+      title: '嗩吶',
+      info: '<span>/ 嗩吶 /</span><br><span>「藝陣館」收藏品。<br>中國傳統樂器，出山必備。</span>'
     }],
     beacons: ['801-12802-4292', '801-40818-19784', '801-10403-573'],
     questions: [{
@@ -410,9 +422,11 @@ const ftd = [{
     <p>市立圖書館廣場停車場<span style="color: red;">（收費）</span>：臺南市北區公園北路3號</p>
     <p>公園路兵配場臨時路外公有停車場<span style="color: red;">（收費）</span>：臺南市北區公園路</p>`,
     items: [{
-      title: '神秘的布幕',
+      title: '神秘布幕',
+      info: '<span>/ 神秘布幕 /</span><br><span>「生活館」收藏品。<br>布幕後，隱藏著幾千年前的秘密。</span>'
     }, {
       title: '底片相機',
+      info: '<span>/ 底片相機 /</span><br><span>「生活館」收藏品。<br>復古小物，也是文青必備。</span>'
     }],
     beacons: ['801-7426-49200', '801-11717-43736'],
     questions: [{
@@ -473,9 +487,11 @@ const ftd = [{
     <p>臺南俥亭成功停車場<span style="color: red;">（收費）</span>：臺南市北區成功路22巷3號</p>
     <p>文創停車場<span style="color: red;">（收費）</span>：臺南市東區北門路二段22號</p>`,
     items: [{
-      title: '針線球',
+      title: '毛線球',
+      info: '<span>/ 毛線球 /</span><br><span>「體驗館」收藏品。<br>蘊含了媽媽的愛。</span>'
     }, {
       title: '木槌',
+      info: '<span>/ 木槌 /</span><br><span>「體驗館」收藏品。<br>感覺甚麼東西都敲的破的木槌。</span>'
     }],
     beacons: ['801-1344-37288', '801-55362-11108'],
     questions: [{
