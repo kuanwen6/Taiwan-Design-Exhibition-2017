@@ -273,6 +273,7 @@ myApp.onPageInit('collection', function(page) {
           } else {
             $$('.collection_info').removeClass('collection_info_r');
           }
+          $$('.collection_info').html(ftd[i].items[j-1].info);
           $$('.collection_info').css({ top: $$img.offset().top + $$img.height() / 2 - 10 + 'px', left: $$img.offset().left + $$img.width() / 2 + 'px' });
           $$('.collection_info').css('display', 'inline-table');
         });

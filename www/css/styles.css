@@ -97,7 +97,7 @@ div[data-page='collection'] {
   transform: translate(-25%, 0);
   background-image: url('../img/collection_info_lbg.png');
   background-size: 100% 100%;
-  padding: 35px 10px 20px 20px;
+  padding: 30px 10px 20px 20px;
   color: white;
   top: 0px;
   left: 0px;
@@ -111,11 +111,12 @@ div[data-page='collection'] {
 }
 
 .collection_info span:first-child {
-  font-size: 4.6vw;
+  font-size: 4.2vw;
 }
 
-.collection_info span:nth-child(2) {
-  font-size: 4.4vw;
+.collection_info span:last-child {
+  font-size: 3.5vw;
+  letter-spacing: 1px;
 }
 
 .collections div img {
