@@ -21,6 +21,9 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "edu.ncku.designexpo"
+        },
+        "cordova-custom-config": {
+            "PACKAGE_NAME": "edu.ncku.designexpo"
         }
     },
     "dependent_plugins": {}

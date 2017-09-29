@@ -10,6 +10,8 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: true
 });
 
+let bgm;
+
 $$(document).on('backbutton', function() {
   $$('.navbar').css('background-image', 'none');
   $$('.navbar').css('background-size', 'none');
@@ -17,10 +19,36 @@ $$(document).on('backbutton', function() {
   $$('.navbar-inner').css('padding-top', '0px');
   mainView.hideNavbar(false);
   var view = myApp.getCurrentView();
-  view.router.back();
+
+  var page = view.activePage; 
+
+  if(page.name=="home"){
+    var result = myApp.confirm("確定要離開台灣設計展嗎？", "台灣設計展", function() {
+      navigator.app.clearHistory();
+      navigator.app.exitApp();
+    });   
+  }else{
+    if(page.name!="challenge")
+    {
+      bgm.play();
+      view.router.back({ url: 'home.html', force: true });
+    }
+  }
 });
 
-let bgm;
+$$(document).on('pause', function() {
+  beacon_util.stopScanForBeacons();
+  bgm.pause();
+
+  console.log("pause");
+});
+
+$$(document).on('resume', function() {
+  beacon_util.startScanForBeacons();
+  bgm.play();
+
+  console.log("resume");
+});
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
@@ -93,13 +121,13 @@ myApp.onPageInit('home', function(page) {
         }, 500);
         $$(window).once('click', (event) => {
           $$('.ai_speech2').hide();
-          //  beacon_util.startScanForBeacons();
+          beacon_util.startScanForBeacons();
         });
       });
     });
   } else {
     $$(window).once('click', (event) => {
-      //  beacon_util.startScanForBeacons();
+      beacon_util.startScanForBeacons();
     });
   }
 
