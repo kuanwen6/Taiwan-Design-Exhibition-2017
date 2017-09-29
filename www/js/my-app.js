@@ -10,6 +10,8 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: true
 });
 
+let bgm;
+
 $$(document).on('backbutton', function() {
   $$('.navbar').css('background-image', 'none');
   $$('.navbar').css('background-size', 'none');
@@ -26,7 +28,11 @@ $$(document).on('backbutton', function() {
       navigator.app.exitApp();
     });   
   }else{
-    view.router.back();
+    if(page.name!="challenge")
+    {
+      bgm.play();
+      view.router.back({ url: 'home.html', force: true });
+    }
   }
 });
 
@@ -43,8 +49,6 @@ $$(document).on('resume', function() {
 
   console.log("resume");
 });
-
-let bgm;
 
 $$(document).on('deviceready', function() {
   console.log("Device is ready!");
