@@ -297,7 +297,8 @@ myApp.onPageInit('collection', function(page) {
           } else {
             $$('.collection_info').removeClass('collection_info_r');
           }
-          $$('.collection_info').css({ top: $$img.offset().top + $$img.height() / 2 + 'px', left: $$img.offset().left + $$img.width() / 2 + 'px' });
+          $$('.collection_info').html(ftd[i].items[j-1].info);
+          $$('.collection_info').css({ top: $$img.offset().top + $$img.height() / 2 - 10 + 'px', left: $$img.offset().left + $$img.width() / 2 + 'px' });
           $$('.collection_info').css('display', 'inline-table');
         });
       } else {
@@ -390,27 +391,35 @@ myApp.onPageInit('challenge', function(page) {
     $$('.loading').html('第一題');
   }, 3000);
 
-  let number = 0;
-
   let siteNum = 0;
   if (page.context.siteNum) {
     siteNum = page.context.siteNum;
   }
 
+
+  const number1 = Math.floor(Math.random()*ftd[siteNum].questions.length);
+  let number2 = Math.floor(Math.random()*ftd[siteNum].questions.length);
+  while (number1 === number2) {
+    number2 = Math.floor(Math.random()*ftd[siteNum].questions.length);
+  }
+  const pickNumber = [number1, number2];
+
+  let number = 0;
+
   let questions = ftd[siteNum].questions;
   let result = ['pass', 'pass'];
   let getItem = false;
 
-  $$('#questionTextArea').html(questions[number].question);
+  $$('#questionTextArea').html(questions[pickNumber[number]].question);
   $$('#question-number').html(`Q${number+1}:`);
   for (let i = 0; i < 4; i += 1) {
-    $$(`#answer${i+1}`).html(questions[number].options[i]);
+    $$(`#answer${i+1}`).html(questions[pickNumber[number]].options[i]);
   }
 
   $$('.answer').on('click', function answerClicked() {
     $$('.loading').html(' ');
     $$('.answer').off('click', answerClicked); // lock the button
-    if (this.id === questions[number].answer) {
+    if (this.id === questions[pickNumber[number]].answer) {
       $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/correct-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
@@ -477,10 +486,10 @@ myApp.onPageInit('challenge', function(page) {
         setTimeout(() => {
           number++;
 
-          $$('#questionTextArea').html(questions[number].question);
+          $$('#questionTextArea').html(questions[pickNumber[number]].question);
           $$('#question-number').html(`Q${number+1}:`);
           for (let i = 0; i < 4; i += 1) {
-            $$(`#answer${i+1}`).html(questions[number].options[i]);
+            $$(`#answer${i+1}`).html(questions[pickNumber[number]].options[i]);
           }
           $$('.answer').on('click', answerClicked); // unlock the button
         }, 2500);

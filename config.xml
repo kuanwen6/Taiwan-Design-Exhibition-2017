@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="edu.ncku.designexpo" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>台灣設計展</name>
-    <description>
+<widget id="edu.ncku.designexpo" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android = "http://schemas.android.com/apk/res/android">
+  <name>台灣設計展</name>
+  <description>
     2017台灣設計展好棒！
   </description>
     <author email="F74036108@mail.ncku.edu.tw" href="https://github.com/winone520/Taiwan-Design-Exhibition-2017">

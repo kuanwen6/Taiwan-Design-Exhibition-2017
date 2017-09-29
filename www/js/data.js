@@ -52,8 +52,10 @@ const ftd = [{
     <p>大學路社E2停車場<span style="color: red;">（收費）</span>：臺南市東區大學路與育樂街66巷交叉路口</p>`,
     items: [{
       title: '古代書籍',
+      info: '<span>/ 古代書籍 /</span><br><span>「主題館」收藏品。<br>塵封已久的神秘古書，據說裡面記載著幸福的祕密。</span>'
     }, {
       title: '老舊的尺規',
+      info: '<span>/ 老舊的尺規 /</span><br><span>「主題館」收藏品。<br>聽說是幾百年前的建築師在使用的工具呢。</span>'
     }],
     beacons: ['801-52342-28213', '801-50788-41017'],
     questions: [{
@@ -74,7 +76,16 @@ const ftd = [{
         '雲端智能'
       ],
       answer: 'answer3'
-    }],
+    }, {
+      question: '請問「主題館」的展品都圍繞在何種概念之下呢？',
+       options: [
+           '幸福',
+           '幸運',
+           '讚讚讚',
+           '哀怨'
+          ],
+      answer: 'anwser1'
+   }],
   },
 
   //  南風館 ftd[1]
@@ -115,9 +126,11 @@ const ftd = [{
     <p>國立成功大學光復校區計時收費停車場<span style="color: red;">（收費）</span>：臺南市東區大學路1號</p>
     <p>大學路社E2停車場<span style="color: red;">（收費）</span>：臺南市東區大學路與育樂街66巷交叉路口</p>`,
     items: [{
-      title: '南風',
+      title: '徐徐南風',
+      info: '<span>/ 徐徐南風 /</span><br><span>「南風館」收藏品。<br>哇，好涼的風阿！</span>'
     }, {
       title: '毛筆',
+      info: '<span>/ 毛筆 /</span><br><span>「南風館」收藏品。<br>這筆，感覺不是單純的一支筆。</span>'
     }],
     beacons: ['801-52342-28213', '801-50788-41017'],
     questions: [{
@@ -138,7 +151,25 @@ const ftd = [{
         '透'
       ],
       answer: 'answer4'
-    }],
+    },{
+      question: '請問「南風館」將在在溫暖濕熱南風吹拂之中，帶領民眾進入臺南幾種不同類型的場域空間呢？',
+      option: [
+          '101種',
+          '7種',
+          '3種',
+          '36種'
+      ],
+      answer: 'anwser2'
+  }, {
+      question: '請問南風館展品中的「巷弄風景」，是因什麼哪一個台灣早年手工打造的物件作為啟發的呢', 
+      opeions: [
+          '鐵窗花',
+          '鐵傘花',
+          '鐵牛車',
+          '一桿秤子'
+      ],
+      answer: 'anwser2'
+  }],
   },
 
   //  工藝館 ftd[2]
@@ -176,8 +207,10 @@ const ftd = [{
     <p>台灣聯通臺南忠義場<span style="color: red;">（收費）</span>：臺南市中西區忠義路二段177號旁</p>`,
     items: [{
       title: '貪婪之壺',
+      info: '<span>/ 貪婪之壺 /</span><br><span>「工藝館」收藏品。<br>表面的圖案隱約有個詭異的笑容。</span>'
     }, {
       title: '祕法指環',
+      info: '<span>/ 祕法指環 /</span><br><span>「工藝館」收藏品。<br>據說戴上去的人，會喪失自我。</span>'
     }],
     beacons: ['801-42864-8916'],
     questions: [{
@@ -198,7 +231,43 @@ const ftd = [{
         '以上皆是'
       ],
       answer: 'answer4'
-    }],
+    }, {
+      question: '請回答「工藝主題館」的名稱為何？',
+      options: [
+          '祕密的連結',
+          '紅蓮的火焰',
+          '鋼鐵的意志',
+          '好熱的台南'
+      ],
+      answer: 'anwser1'
+  }, {
+      question: '請問工藝館將以幾大主題作為呈現呢?',
+      options: [
+          '5',
+          '4',
+          '6',
+          '7'
+      ],
+      answer: 'anwser2'
+  } , {
+      question: '請問工藝館的策展目的是為了要？',
+      options: [
+          '找回人與工藝的連結',
+          '找回台南人的驕傲',
+          '能夠找回祕密的連結',
+          '奪回希望的曙光'
+      ],
+      answer: 'anwser1'
+  }, {
+      question: '工藝館有哪些策展主題呢？',
+      options: [
+          '老衣物新生活',
+          '設計在地工藝時尚',
+          '工藝X茶席',
+          '以上皆是'
+      ],
+      answer: 'anwser4'
+  }],
   },
 
   //  新銳館 ftd[3]
@@ -237,9 +306,11 @@ const ftd = [{
     <p>新光三越新天地二館停車場<span style="color: red;">（收費）</span>：永福路一段189號</p>
     <p>客家文化會館路外停車場<span style="color: red;">（收費）</span>：夏林路客家文化會館旁</p>`,
     items: [{
-      title: '藍色染料',
+      title: '藍色藥水',
+      info: '<span>/ 藍色藥水 /</span><br><span>「新銳館」收藏品。<br>國小實驗室的硫酸銅水溶液。</span>'
     }, {
       title: '藍晒杯墊',
+      info: '<span>/ 藍晒杯墊 /</span><br><span>「新銳館」收藏品。<br>有藍晒圖的杯墊，文青必備。</span>'
     }],
     beacons: ['801-13805-7574', '801-6267-58260'],
     questions: [{
@@ -260,7 +331,25 @@ const ftd = [{
         '31~40位'
       ],
       answer: 'answer4'
-    }]
+    },{
+      question: '請問「新銳館」設展於何處?',
+      options: [
+          '臺南文化創意產業園區', 
+          '成功大學', 
+          '藍晒圖文創園區', 
+          '台南火車站'
+      ],
+      answer: 'answer3'
+  },{
+      question: '「新銳館」的主軸「青出於藍」代表著新生代的能量如何?',
+      options: [
+          '超凡入聖', 
+          '時有時無', 
+          '逆轟高灰', 
+          '源源不決'
+      ],
+      answer: 'answer3'
+  }]
   },
 
   //  國際館 ftd[4]
@@ -295,8 +384,10 @@ const ftd = [{
     <p>成大醫院汽機車停車場<span style="color: red;">（收費）</span>：臺南市北區小東路35號</p>`,
     items: [{
       title: '瓶中信',
+      info: '<span>/ 瓶中信 /</span><br><span>「國際館」收藏品。<br>一對德國夫婦，發現了108年前的瓶中信......</span>'
     }, {
       title: '核廢料',
+      info: '<span>/ 核廢料 /</span><br><span>「國際館」收藏品。<br>無核家園，用愛發電。</span>'
     }],
     beacons: ['801-1735-11217', '801-42299-52938'],
     questions: [{
@@ -317,7 +408,25 @@ const ftd = [{
         '在地工藝時尚'
       ],
       answer: 'answer4'
-    }],
+    },{
+      question: '本次「國際館」的主題Betwin Ocean中的「Betwin」為何者縮寫?',
+      options: [
+          'Bet + win', 
+          'Be + twin', 
+          'Betw + in',
+          '以上皆非' 
+      ],
+      answer: 'answer2'
+  },{
+      question: '請問「國際館」設展於何處?',
+      options: [
+          'C-Hub成大創意基地', 
+          '成大國際會議廳', 
+          '成大雲平大樓', 
+          '成大KnowLEDGE'
+      ],
+      answer: 'answer1'
+  }],
   },
 
   //  藝陣館 ftd[5]
@@ -351,9 +460,11 @@ const ftd = [{
     <p>延平郡王祠大埔街口路外停車場<span style="color: red;">（收費）</span>：臺南市中西區開山路與大埔街路口西側</p>
     <p>Times臺南忠義府前停車場<span style="color: red;">（收費）</span>：臺南市中西區忠義路一段96號旁空地</p>`,
     items: [{
-      title: '劍獅雕像',
+      title: '劍獅',
+      info: '<span>/ 劍獅 /</span><br><span>「藝陣館」收藏品。<br>咬著一把劍的獅子。</span>'
     }, {
-      title: '破舊的嗩吶',
+      title: '嗩吶',
+      info: '<span>/ 嗩吶 /</span><br><span>「藝陣館」收藏品。<br>中國傳統樂器，出山必備。</span>'
     }],
     beacons: ['801-12802-4292', '801-40818-19784', '801-10403-573'],
     questions: [{
@@ -374,7 +485,25 @@ const ftd = [{
         '藝陣中心'
       ],
       answer: 'answer2'
-    }],
+    },{
+      question: '請問「藝陣館」設展於何處?',
+      options: [
+          '成大成功湖', 
+          '吳園', 
+          'C-Hub成大創意基地', 
+          '臺南創意中心'
+      ],
+      answer: 'answer4'
+  },{
+      question: '請問下列何者是本次「台灣設計展」的年度主題?',
+      options: [
+          '幸福設計在臺南', 
+          '潮流文化在臺南', 
+          '前衛設計在臺南', 
+          '捷運即將在臺南'
+      ],
+      answer: 'answer1'
+  }],
   },
 
   //  生活館 ftd[6]
@@ -410,9 +539,11 @@ const ftd = [{
     <p>市立圖書館廣場停車場<span style="color: red;">（收費）</span>：臺南市北區公園北路3號</p>
     <p>公園路兵配場臨時路外公有停車場<span style="color: red;">（收費）</span>：臺南市北區公園路</p>`,
     items: [{
-      title: '神秘的布幕',
+      title: '神秘布幕',
+      info: '<span>/ 神秘布幕 /</span><br><span>「生活館」收藏品。<br>布幕後，隱藏著幾千年前的秘密。</span>'
     }, {
       title: '底片相機',
+      info: '<span>/ 底片相機 /</span><br><span>「生活館」收藏品。<br>復古小物，也是文青必備。</span>'
     }],
     beacons: ['801-7426-49200', '801-11717-43736'],
     questions: [{
@@ -434,7 +565,25 @@ const ftd = [{
           '離'
         ],
         answer: 'answer1'
-      }
+      },{
+        question: '請問「生活館」設展於何處?',
+        options: [
+            '成大成功湖', 
+            '321巷藝術聚落', 
+            'C-Hub成大創意基地', 
+            '台南生活美學館'
+        ],
+        answer: 'answer2'
+    },{
+        question: '請問下列哪些單位並沒有在「生活館」展出?',
+        options: [
+            '上班不要看影音工作室', 
+            '三坪半工作室', 
+            '蔚龍藝術', 
+            '台南人劇團'
+        ],
+        answer: 'answer1'
+    }
     ],
   },
 
@@ -473,9 +622,11 @@ const ftd = [{
     <p>臺南俥亭成功停車場<span style="color: red;">（收費）</span>：臺南市北區成功路22巷3號</p>
     <p>文創停車場<span style="color: red;">（收費）</span>：臺南市東區北門路二段22號</p>`,
     items: [{
-      title: '針線球',
+      title: '毛線球',
+      info: '<span>/ 毛線球 /</span><br><span>「體驗館」收藏品。<br>蘊含了媽媽的愛。</span>'
     }, {
       title: '木槌',
+      info: '<span>/ 木槌 /</span><br><span>「體驗館」收藏品。<br>感覺甚麼東西都敲的破的木槌。</span>'
     }],
     beacons: ['801-1344-37288', '801-55362-11108'],
     questions: [{
@@ -497,7 +648,25 @@ const ftd = [{
           'faker'
         ],
         answer: 'answer1',
-      }
+      },{
+        question: '請問「體驗館」設展於何處?',
+        options: [
+            '台南文學館', 
+            '台南歷史博物館', 
+            '台南文化創意產業園區', 
+            '台南生活美學館'
+        ],
+        answer: 'answer3'
+    },{
+        question: '請問「台灣設計展」展期於今年何時結束?',
+        options: [
+            '10/31', 
+            '12/31', 
+            '10/1', 
+            '10/15'
+        ],
+        answer: 'answer4'
+    }
     ]
   }
 ];
