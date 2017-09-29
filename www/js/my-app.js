@@ -11,6 +11,7 @@ var mainView = myApp.addView('.view-main', {
 });
 
 let bgm;
+let bgm_challenge;
 
 $$(document).on('backbutton', function() {
   $$('.navbar').css('background-image', 'none');
@@ -39,6 +40,7 @@ $$(document).on('backbutton', function() {
 $$(document).on('pause', function() {
   beacon_util.stopScanForBeacons();
   bgm.pause();
+  bgm_challenge.stop();
 
   console.log("pause");
 });
@@ -73,6 +75,20 @@ $$(document).on('deviceready', function() {
   });
 
   bgm.play();
+
+  //Load challenge music
+  let path2;
+  if (device.platform == 'Android') {
+    path2 = "/android_asset/www/audio/bgm_challenge.mp3";
+  } else {
+    path2 = "audio/bgm_challenge.mp3";
+  }
+
+  bgm_challenge = new Media(path2, function() {
+    console.log('success');
+  }, function(err) {
+    console.log(err);
+  });
 });
 
 myApp.onPageBeforeInit('home', function(page) {
@@ -352,6 +368,7 @@ myApp.onPageInit('challenge', function(page) {
   mainView.showNavbar(false);
   console.log(page);
   bgm.pause();
+  /*
   let path;
   if (device.platform == 'Android') {
     path = "/android_asset/www/audio/bgm_challenge.mp3";
@@ -364,6 +381,7 @@ myApp.onPageInit('challenge', function(page) {
   }, function(err) {
     console.log(err);
   });
+  */
 
   bgm_challenge.play();
 
