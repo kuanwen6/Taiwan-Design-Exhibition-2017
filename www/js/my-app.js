@@ -10,8 +10,38 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: true
 });
 
-let bgm;
-let bgm_challenge;
+// Load bg music
+var path = "";
+if (myApp.device.os == 'android') {
+  path = "/android_asset/www/audio/bgm.mp3";
+} else {
+  path = "audio/bgm.mp3";
+}
+
+var bgm = new Media(path, function() {
+  console.log('success');
+}, function(err) {
+  console.log(err);
+}, function(code) {
+  if (code == Media.MEDIA_STOPPED) {
+    bgm.play();
+  }
+});
+
+// Load challenge music
+// var path2 = "";
+// if (myApp.device.os == 'android') {
+//   path2 = "/android_asset/www/audio/bgm_challenge.mp3";
+// } else {
+//   path2 = "audio/bgm_challenge.mp3";
+// }
+
+// var bgm_challenge = new Media(path2, function() {
+//   console.log('success');
+// }, function(err) {
+//   console.log(err);
+// });
+var bgm_challenge = null;
 
 $$(document).on('backbutton', function() {
   $$('.navbar').css('background-image', 'none');
@@ -40,7 +70,9 @@ $$(document).on('backbutton', function() {
 $$(document).on('pause', function() {
   beacon_util.stopScanForBeacons();
   bgm.pause();
-  bgm_challenge.stop();
+  if(bgm_challenge != null){
+    bgm_challenge.stop();
+  }
 
   console.log("pause");
 });
@@ -57,38 +89,38 @@ $$(document).on('deviceready', function() {
   // Setup beacon detection
   beacon_util.init_beacon_detection();
 
-  let path;
-  if (device.platform == 'Android') {
-    path = "/android_asset/www/audio/bgm.mp3";
-  } else {
-    path = "audio/bgm.mp3";
-  }
+  // let path;
+  // if (device.platform == 'Android') {
+  //   path = "/android_asset/www/audio/bgm.mp3";
+  // } else {
+  //   path = "audio/bgm.mp3";
+  // }
 
-  bgm = new Media(path, function() {
-    console.log('success');
-  }, function(err) {
-    console.log(err);
-  }, function(code) {
-    if (code == Media.MEDIA_STOPPED) {
-      bgm.play();
-    }
-  });
+  // bgm = new Media(path, function() {
+  //   console.log('success');
+  // }, function(err) {
+  //   console.log(err);
+  // }, function(code) {
+  //   if (code == Media.MEDIA_STOPPED) {
+  //     bgm.play();
+  //   }
+  // });
 
   bgm.play();
 
   //Load challenge music
-  let path2;
-  if (device.platform == 'Android') {
-    path2 = "/android_asset/www/audio/bgm_challenge.mp3";
-  } else {
-    path2 = "audio/bgm_challenge.mp3";
-  }
+  // let path2;
+  // if (device.platform == 'Android') {
+  //   path2 = "/android_asset/www/audio/bgm_challenge.mp3";
+  // } else {
+  //   path2 = "audio/bgm_challenge.mp3";
+  // }
 
-  bgm_challenge = new Media(path2, function() {
-    console.log('success');
-  }, function(err) {
-    console.log(err);
-  });
+  // bgm_challenge = new Media(path2, function() {
+  //   console.log('success');
+  // }, function(err) {
+  //   console.log(err);
+  // });
 });
 
 myApp.onPageBeforeInit('home', function(page) {
@@ -382,6 +414,19 @@ myApp.onPageInit('challenge', function(page) {
     console.log(err);
   });
   */
+  // Load challenge music
+  var path2 = "";
+  if (myApp.device.os == 'android') {
+    path2 = "/android_asset/www/audio/bgm_challenge.mp3";
+  } else {
+    path2 = "audio/bgm_challenge.mp3";
+  }
+
+  bgm_challenge = new Media(path2, function() {
+    console.log('success');
+  }, function(err) {
+    console.log(err);
+  });
 
   bgm_challenge.play();
 
