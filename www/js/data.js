@@ -162,7 +162,7 @@ const ftd = [{
       answer: 'answer2'
   }, {
       question: '請問南風館展品中的「巷弄風景」，是因什麼哪一個台灣早年手工打造的物件作為啟發的呢', 
-      opeions: [
+      options: [
           '鐵窗花',
           '鐵傘花',
           '鐵牛車',
