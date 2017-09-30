@@ -10,37 +10,9 @@ var mainView = myApp.addView('.view-main', {
   dynamicNavbar: true
 });
 
-// Load bg music
-var path = "";
-if (myApp.device.os == 'android') {
-  path = "/android_asset/www/audio/bgm.mp3";
-} else {
-  path = "audio/bgm.mp3";
-}
 
-var bgm = new Media(path, function() {
-  console.log('success');
-}, function(err) {
-  console.log(err);
-}, function(code) {
-  if (code == Media.MEDIA_STOPPED) {
-    bgm.play();
-  }
-});
 
-// Load challenge music
-// var path2 = "";
-// if (myApp.device.os == 'android') {
-//   path2 = "/android_asset/www/audio/bgm_challenge.mp3";
-// } else {
-//   path2 = "audio/bgm_challenge.mp3";
-// }
-
-// var bgm_challenge = new Media(path2, function() {
-//   console.log('success');
-// }, function(err) {
-//   console.log(err);
-// });
+var bgm = null;
 var bgm_challenge = null;
 
 $$(document).on('backbutton', function() {
@@ -89,38 +61,24 @@ $$(document).on('deviceready', function() {
   // Setup beacon detection
   beacon_util.init_beacon_detection();
 
-  // let path;
-  // if (device.platform == 'Android') {
-  //   path = "/android_asset/www/audio/bgm.mp3";
-  // } else {
-  //   path = "audio/bgm.mp3";
-  // }
-
-  // bgm = new Media(path, function() {
-  //   console.log('success');
-  // }, function(err) {
-  //   console.log(err);
-  // }, function(code) {
-  //   if (code == Media.MEDIA_STOPPED) {
-  //     bgm.play();
-  //   }
-  // });
+  // Load bg music
+  var path = "";
+  if (myApp.device.os == 'android') {
+    path = "/android_asset/www/audio/bgm.mp3";
+  } else {
+    path = "audio/bgm.mp3";
+  }
+  bgm = new Media(path, function() {
+    console.log('success');
+  }, function(err) {
+    console.log(err);
+  }, function(code) {
+    if (code == Media.MEDIA_STOPPED) {
+      bgm.play();
+    }
+  });
 
   bgm.play();
-
-  //Load challenge music
-  // let path2;
-  // if (device.platform == 'Android') {
-  //   path2 = "/android_asset/www/audio/bgm_challenge.mp3";
-  // } else {
-  //   path2 = "audio/bgm_challenge.mp3";
-  // }
-
-  // bgm_challenge = new Media(path2, function() {
-  //   console.log('success');
-  // }, function(err) {
-  //   console.log(err);
-  // });
 });
 
 myApp.onPageBeforeInit('home', function(page) {
