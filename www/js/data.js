@@ -84,7 +84,7 @@ const ftd = [{
            '讚讚讚',
            '哀怨'
           ],
-      answer: 'anwser1'
+      answer: 'answer1'
    }],
   },
 
@@ -159,7 +159,7 @@ const ftd = [{
           '3種',
           '36種'
       ],
-      answer: 'anwser2'
+      answer: 'answer2'
   }, {
       question: '請問南風館展品中的「巷弄風景」，是因什麼哪一個台灣早年手工打造的物件作為啟發的呢', 
       opeions: [
@@ -168,7 +168,7 @@ const ftd = [{
           '鐵牛車',
           '一桿秤子'
       ],
-      answer: 'anwser2'
+      answer: 'answer2'
   }],
   },
 
@@ -239,7 +239,7 @@ const ftd = [{
           '鋼鐵的意志',
           '好熱的台南'
       ],
-      answer: 'anwser1'
+      answer: 'answer1'
   }, {
       question: '請問工藝館將以幾大主題作為呈現呢?',
       options: [
@@ -248,7 +248,7 @@ const ftd = [{
           '6',
           '7'
       ],
-      answer: 'anwser2'
+      answer: 'answer2'
   } , {
       question: '請問工藝館的策展目的是為了要？',
       options: [
@@ -257,7 +257,7 @@ const ftd = [{
           '能夠找回祕密的連結',
           '奪回希望的曙光'
       ],
-      answer: 'anwser1'
+      answer: 'answer1'
   }, {
       question: '工藝館有哪些策展主題呢？',
       options: [
@@ -266,7 +266,7 @@ const ftd = [{
           '工藝X茶席',
           '以上皆是'
       ],
-      answer: 'anwser4'
+      answer: 'answer4'
   }],
   },
 
