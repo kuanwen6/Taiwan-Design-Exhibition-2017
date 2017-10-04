@@ -373,6 +373,7 @@ myApp.onPageInit('challenge', function(page) {
   });
   */
   // Load challenge music
+  
   var path2 = "";
   if (myApp.device.os == 'android') {
     path2 = "/android_asset/www/audio/bgm_challenge.mp3";
@@ -444,7 +445,10 @@ myApp.onPageInit('challenge', function(page) {
   $$('.answer').on('click', function answerClicked() {
     $$('.loading').html(' ');
     $$('.answer').off('click', answerClicked); // lock the button
+    $(`.answer:not(#${this.id})`).animate({opacity: 0.2},2300,'easeOutQuint'); // opacity the answer button
+  
     if (this.id === questions[pickNumber[number]].answer) {
+
       $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/correct-btn.png") !important');
       $$(`#${this.id}`).append(`<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
         <circle class="path circle" fill="none" stroke="white" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
@@ -496,12 +500,14 @@ myApp.onPageInit('challenge', function(page) {
           });
         });
       } else {
+        
         $$('#start-text').css('animation', 'head-half 1.5s 1s');
         $$('.custom-start-modal').css('animation', 'fadeInFromNone 0.6s 3.5s ease-in-out, fadeOut 0.6s ease-in-out')
         $$('#gameStart-modal').css('display', 'block');
         setTimeout(() => {
           $$('.loading').html('第二題');
           $$(`#${this.id}`).attr('style', 'background-image: url("img/btn-background/normal-btn.png") !important');
+          $$(`.answer:not(#${this.id})`).css('opacity', '1');
         }, 1200);
         setTimeout(() => {
           $$('#gameStart-modal').css('display', 'none');
