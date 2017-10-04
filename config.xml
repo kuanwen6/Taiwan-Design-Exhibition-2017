@@ -30,6 +30,7 @@
         <preference name="target-device" value="handset" />
         <preference name="webviewbounce" value="false" />
         <splash height="2208" src="res/ios/splash/Default-736h.png" width="1242" />
+        <splash height="1242" src="res/ios/splash/2208x1242.png" width="2208" />
         <splash height="1334" src="res/ios/splash/Default-667h.png" width="750" />
         <splash height="1136" src="res/ios/splash/Default-568h.png" width="640" />
         <splash height="960" src="res/ios/splash/Default@2x~iphone.png" width="640" />
@@ -40,7 +41,9 @@
         <icon height="100" src="res/ios/icon/100x100.png" width="100" />
         <icon height="57" src="res/ios/icon/57x57.png" width="57" />
         <icon height="60" src="res/ios/icon/60x60.png" width="60" />
+        <icon height="72" src="res/ios/icon/72x72.png" width="72" />
         <icon height="76" src="res/ios/icon/76x76.png" width="76" />
+        <icon height="144" src="res/ios/icon/144x144.png" width="144" />
         <icon height="152" src="res/ios/icon/152x152.png" width="152" />
         <icon height="167" src="res/ios/icon/167x167.png" width="167" />
         <icon height="114" src="res/ios/icon/114x114.png" width="114" />
